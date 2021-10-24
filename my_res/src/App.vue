@@ -1,31 +1,41 @@
 <template>
   <div>
-    <router-view></router-view>
+    <!-- <router-view></router-view> -->
+
+    <Test />
   </div>
 </template>
 
 <script>
-export default {};
+import Test from "./views/Test.vue";
+
+export default {
+  components: { Test },
+};
 </script>
 
 <style>
 /* Import Bootstrap */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
-/* @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,400&display=swap"); */
 
+/* Import Google Font  */
+/* @import url("https://fonts.googleapis.com/css?family=Roboto:100,400,900");
+@import url("https://fonts.googleapis.com/css?family=Anton");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700"); */
+
+/* #8e9189, #494449, #857f74, #eeefeb, #ddeac1  */
 * {
   box-sizing: border-box;
 }
 
-/* body {
-  font-family: "Roboto", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
+html {
+  height: 100%;
+}
+
+body {
+  /* font-family: "Montserrat", sans-serif; */
   margin: 0;
-} */
+  height: 100%;
+}
 </style>

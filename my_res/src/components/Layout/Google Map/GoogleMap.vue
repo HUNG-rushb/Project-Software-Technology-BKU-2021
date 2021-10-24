@@ -1,5 +1,5 @@
 <template>
-  <section class="google-map">
+  <section class="google-map" data-aos="zoom-in-up">
     <!-- https://developers.google.com/maps/documentation/embed/map-generator -->
     <iframe
       id="MapAPI"
@@ -17,8 +17,8 @@ export default {};
 <style scoped>
 #MapAPI {
   width: 100%;
-  /* height: 450; */
-  height: 20%;
-  border: 0;
+  height: 100%;
+  padding: 0.8rem;
+  margin: 0;
 }
 </style>

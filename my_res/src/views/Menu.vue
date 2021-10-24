@@ -1,7 +1,13 @@
-<template></template>
+<template>
+  <div></div>
+</template>
 
 <script>
-export default {};
+import GridMenu from "../components/Menu/GridMenu.vue";
+
+export default {
+  components: { GridMenu },
+};
 </script>
 
-<style></style>
+<style scoped></style>

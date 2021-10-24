@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import HeaderVideo from "../components/Header Footer/HeaderVideo.vue";
-import Header from "../components/Header Footer/Header.vue";
-import Footer from "../components/Header Footer/Footer.vue";
+import HeaderVideo from "../components/Layout/HeaderVideo.vue";
+import Header from "../components/Layout/Header.vue";
+import Footer from "../components/Layout/Footer.vue";
 
 export default {
   components: { HeaderVideo, Header, Footer },
