@@ -2,15 +2,24 @@
   <div>
     <!-- <router-view></router-view> -->
 
-    <Test />
+    <!-- <CartCard /> -->
+    <!-- <Progress /> -->
+    <!-- <OrderGrid /> -->
+
+    <Order />
   </div>
 </template>
 
 <script>
-import Test from "./views/Test.vue";
+// import Test from "./views/Test.vue";
+import Order from "./views/Order.vue";
+// import FoodCard from "./components/Menu/FoodCard.vue";
+import CartCard from "./components/Order/CartCard.vue";
+import Progress from "./components/Order/Progress.vue";
+import OrderGrid from "./components/Order/OrderGrid.vue";
 
 export default {
-  components: { Test },
+  components: { Order, CartCard, Progress, OrderGrid },
 };
 </script>
 

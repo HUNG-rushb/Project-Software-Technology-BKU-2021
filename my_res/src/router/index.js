@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Menu from "../views/Menu.vue";
+import Order from "../views/Order.vue";
+import Error_404 from "../views/Menu.vue";
 import Test from "../views/Test.vue";
 
 const routes = [
@@ -15,19 +17,30 @@ const routes = [
     components: { default: Menu },
   },
   // {
-  //   path: "/test",
-  //   name: "Test",
-  //   components: { default: Test },
+  //   path: "/login",
+  //   name: "Login",
+  //   components: { default: Login },
   // },
-
   // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
+  //   path: "/register",
+  //   name: "Register",
+  //   components: { default: Register },
+  // },
+  {
+    path: "/order",
+    name: "Order",
+    components: { default: Order },
+  },
+  {
+    path: "/error404",
+    name: "Error_404",
+    components: { default: Error_404 },
+  },
+  {
+    path: "/test",
+    name: "Test",
+    components: { default: Test },
+  },
 ];
 
 const router = createRouter({
