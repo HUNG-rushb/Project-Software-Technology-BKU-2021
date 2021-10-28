@@ -1,12 +1,14 @@
 <template>
   <div>
-    <!-- <router-view></router-view> -->
+    <main>
+      <router-view></router-view>
+    </main>
 
     <!-- <CartCard /> -->
     <!-- <Progress /> -->
     <!-- <OrderGrid /> -->
 
-    <Order />
+    <!-- <Order /> -->
   </div>
 </template>
 
@@ -20,6 +22,19 @@ import OrderGrid from "./components/Order/OrderGrid.vue";
 
 export default {
   components: { Order, CartCard, Progress, OrderGrid },
+  data() {
+    return {
+      foods: [
+        {
+          id: "1",
+          name: "Bún bò Huế",
+          description:
+            "Bún bò là một trong những đặc sản của xứ Huế, mặc dù món bún này phổ biến trên cả ba miền ở Việt Nam và cả người Việt tại hải ngoại.",
+          img: "./assets/images/Food images/....",
+        },
+      ],
+    };
+  },
 };
 </script>
 
