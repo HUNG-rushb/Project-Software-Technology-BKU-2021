@@ -9,19 +9,22 @@
     <!-- <OrderGrid /> -->
 
     <!-- <Order /> -->
+
+    <!-- <HomeMenu /> -->
+    <!-- <CheckCart /> -->
   </div>
 </template>
 
 <script>
-// import Test from "./views/Test.vue";
 import Order from "./views/Order.vue";
-// import FoodCard from "./components/Menu/FoodCard.vue";
 import CartCard from "./components/Order/CartCard.vue";
 import Progress from "./components/Order/Progress.vue";
 import OrderGrid from "./components/Order/OrderGrid.vue";
+import HomeMenu from "./components/Home/HomeMenu.vue";
+import CheckCart from "./components/Layout/CheckCart.vue";
 
 export default {
-  components: { Order, CartCard, Progress, OrderGrid },
+  components: { HomeMenu, Order, CartCard, Progress, OrderGrid, CheckCart },
   data() {
     return {
       foods: [
@@ -51,6 +54,7 @@ export default {
 /* #8e9189, #494449, #857f74, #eeefeb, #ddeac1  */
 * {
   box-sizing: border-box;
+  /* display: block; */
 }
 
 html {

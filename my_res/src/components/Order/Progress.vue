@@ -9,6 +9,13 @@
         aria-valuemax="100"
         style="width: 75%"
       ></div>
+
+      <nav class="nav nav-pills nav-justified">
+        <a class="nav-link active" aria-current="page" href="#">Active</a>
+        <a class="nav-link" href="#">Much longer nav link</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link disabled">Disabled</a>
+      </nav>
     </div>
   </div>
 </template>
