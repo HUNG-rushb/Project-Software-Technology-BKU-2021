@@ -54,7 +54,7 @@
 
 <script>
 import GoogleMap from "../Home/Google Map/GoogleMap.vue";
-import BackToTop from "../shared/BackToTop.vue";
+import BackToTop from "./BackToTop.vue";
 // import GoogleMap from "../components/Layout/Google Map/GoogleMap.vue";
 
 export default {

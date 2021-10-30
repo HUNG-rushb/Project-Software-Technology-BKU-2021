@@ -1,6 +1,11 @@
 <template>
   <div>
-    <button type="button" class="btn" @click="topFunction" title="Go to top">
+    <button
+      type="button"
+      class="btn"
+      @click="topFunction"
+      title="Trở về đầu trang"
+    >
       <i class="bi bi-chevron-double-up"></i>
     </button>
   </div>
