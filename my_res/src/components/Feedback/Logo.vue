@@ -1,7 +1,6 @@
 <template>
     <div class="logo">
-        <img src="https://znews-photo.zadn.vn/w660/Uploaded/mfsy2/2021_09_14/avayon.jpg" alt="">
-        <!-- <img src="D:\Project\ĐACNPM\my_res\src\assets\logo.jpg" alt=""> -->
+        <img src="https://st.depositphotos.com/3079665/3991/v/600/depositphotos_39915779-stock-illustration-chef-giving-thumbs-up.jpg" alt="">
     </div>
 </template>
 

@@ -28,6 +28,6 @@
         padding: 32px 0;
     }
     .custom {
-        background-color:azure;
+        background-color:#fff;
     }
 </style>
