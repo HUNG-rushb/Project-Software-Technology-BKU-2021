@@ -23,11 +23,11 @@
 </script>
 
 <style scoped>
-    .main {
-        background-color: #b3b3b3;
-        padding: 32px 0;
-    }
-    .custom {
-        background-color:#fff;
-    }
+.main {
+    background-color: #b3b3b3;
+    padding: 32px 0;
+}
+.custom {
+    background-color:#fff;
+}
 </style>

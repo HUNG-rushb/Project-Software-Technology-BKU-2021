@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import Menu from "../views/Menu.vue";
 import Test from "../views/Test.vue";
 import Feedback from "../views/Feedback.vue";
+import ThankU from "../components/Feedback/ThankU.vue"
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     path: "/feedback",
     name: "Feedback",
     components: { default: Feedback }
+  },
+  {
+    path: "/thanku",
+    name: "ThankU",
+    components: { default: ThankU }
   }
   // {
   //   path: "/test",

@@ -26,10 +26,10 @@
         <div class="form-group">
             <div class="row g-0">
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <button class="form-submit cancel">Hủy</button>
+                    <router-link to="/" class="form-submit cancel">Hủy</router-link>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <button class="form-submit send">Gửi</button>
+                    <router-link to="/thanku" class="form-submit send">Gửi</router-link>
                 </div>
             </div>
         </div>
@@ -81,6 +81,8 @@
     color: #fff;
     border-radius: 8px;
     border: none;
+    display: inline-block;
+    text-decoration: none;
 }
 .form-submit.cancel {
     background-color: #636d77;
