@@ -83,19 +83,7 @@
                   class="btn-group w-100"
                   role="group"
                   aria-label="Basic mixed styles example"
-                >
-                  <button type="button" class="btn btn-danger">
-                    Hủy đặt
-                  </button>
-
-                  <!-- <button type="button" class="btn btn-success" @click="toDest">
-                    Tiếp tục
-                  </button> -->
-
-                  <router-link to="/order/destination" class="btn btn-success">
-                    Tiếp tục
-                  </router-link>
-                </div>
+                ></div>
               </table>
             </div>
           </td>
@@ -107,25 +95,13 @@
 </template>
 
 <script>
-import { inject } from "vue";
+// import { inject } from "vue";
 
 export default {
   setup() {
-    const emitter = inject("emitter");
-
-    const toDestination = () => {
-      emitter.emit("to-dest");
-    };
-
-    return {
-      toDestination,
-    };
+    // const emitter = inject("emitter");
   },
-  methods: {
-    toDest() {
-      this.toDestination();
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -134,7 +110,7 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 1.25rem;
 }
 
 img {
@@ -364,11 +340,5 @@ a {
   border-top: 2px solid #333;
   border-bottom: 2px solid #333;
   font-weight: 700;
-}
-
-.btn {
-  margin-bottom: 2rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
 }
 </style>

@@ -38,8 +38,8 @@ const routes = [
     components: { default: Order },
     children: [
       {
-        name: "your-cart",
-        path: "/order/yourcart",
+        name: "cart",
+        path: "/order/cart",
         component: YourCart,
       },
       {
@@ -49,7 +49,7 @@ const routes = [
       },
       {
         name: "confirm",
-        path: "/order/confirmorder",
+        path: "/order/confirm",
         component: ConfirmOrder,
       },
     ],

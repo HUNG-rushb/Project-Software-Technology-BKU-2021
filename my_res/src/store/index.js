@@ -1,10 +1,11 @@
 import { createStore } from "vuex";
 
 export default createStore({
+  modules: {},
   state: {
-    counter: 0,
-    // $store.state.counter
     itemCount: 0,
+
+    isLoggedIn: false,
   },
   mutations: {
     insertItem(state) {
