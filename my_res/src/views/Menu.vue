@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import FoodCard from "../components/Menu/FoodCard.vue";
+// import GridMenu from "../components/Menu/GridMenu.vue";
 
 export default {
-  components: { FoodCard },
+  // components: { GridMenu },
 };
 </script>
 
