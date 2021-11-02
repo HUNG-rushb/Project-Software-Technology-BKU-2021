@@ -53,24 +53,28 @@
         </div>
       </div>
     </div>
+
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from "../Layout/Header.vue";
+import Footer from "../Layout/Footer.vue";
 import Progress from "./Progress.vue";
 import CartCard from "./CartCard.vue";
 import Invoice from "./Invoice.vue";
 
 export default {
-  components: { Header, CartCard, Invoice, Progress },
+  components: { Header, CartCard, Invoice, Progress, Footer },
   methods: {},
 };
 </script>
 
 <style scoped>
 #yourcart {
-  margin-top: 4rem;
+  margin-top: 7rem;
+  margin-bottom: 3rem;
 }
 
 #twobutton {
