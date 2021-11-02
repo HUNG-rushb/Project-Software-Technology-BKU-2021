@@ -1,18 +1,28 @@
 <template>
   <div>
-    <div class="row">
-      <div class="col-md-9"><OrderGrid /></div>
-      <div class="col-md-3"><Invoice /></div>
-    </div>
+    <!-- <Progress /> -->
+
+    <router-view />
+
+    <!-- <YourCart /> -->
+
+    <!-- <Destination v-else-if="currentPage === 2" /> -->
   </div>
 </template>
 
 <script>
-import OrderGrid from "../components/Order/OrderGrid.vue";
-import Invoice from "../components/Order/Invoice.vue";
+import Progress from "../components/Order/Progress.vue";
+import YourCart from "../components/Order/YourCart.vue";
+import Destination from "../components/Order/Destination.vue";
+import Confirm from "../components/Order/ConfirmOrder.vue";
 
 export default {
-  components: { OrderGrid, Invoice },
+  data() {
+    return {
+      currentPage: 2,
+    };
+  },
+  components: { YourCart, Destination, Confirm },
 };
 </script>
 

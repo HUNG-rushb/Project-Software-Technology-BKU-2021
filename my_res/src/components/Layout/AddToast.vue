@@ -1,9 +1,5 @@
 <template>
   <div>
-    <button @click="alertToast" type="button" class="btn btn-primary">
-      Show toast
-    </button>
-
     <div class="toast-container">
       <div
         id="liveToast"
@@ -30,24 +26,30 @@
 </template>
 
 <script>
-import "bootstrap/dist/js/bootstrap.min.js";
-import { Toast } from "bootstrap/dist/js/bootstrap.esm.min.js";
+import { inject } from "vue";
+import { Toast } from "bootstrap";
+// import { Toast } from "bootstrap/dist/js/bootstrap.esm.min.js"; Double bootstrap error
+// 0:42 2/11/2021
 
 export default {
-  methods: {
-    alertToast() {
-      var toastLiveExample = document.getElementById("liveToast");
+  setup() {
+    // https://forum.vuejs.org/t/vue-3-call-a-method-from-setup/112084
+    // https://stackoverflow.com/questions/64746129/how-to-call-method-in-setup-of-vuejs3-app
+    const emitter = inject("emitter"); // Inject `emitter`
 
-      var toast = new Toast(toastLiveExample);
-
+    const alertToast = () => {
+      var toastLive = document.getElementById("liveToast");
+      var toast = new Toast(toastLive);
       toast.show();
-    },
+    };
+
+    emitter.on("add-item", () => {
+      alertToast();
+    });
   },
-  mounted() {
-    // Array.from(document.querySelectorAll(".toast")).forEach(
-    //   (toastNode) => new Toast(toastNode)
-    // );
-  },
+  methods: {},
+  computed: {},
+  mounted() {},
 };
 </script>
 

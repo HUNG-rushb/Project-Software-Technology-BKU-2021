@@ -1,7 +1,7 @@
 <template>
   <div>
     <main>
-      <router-view></router-view>
+      <router-view />
     </main>
 
     <!-- <Progress /> -->
@@ -14,15 +14,15 @@
 </template>
 
 <script>
-import Order from "./views/Order.vue";
+// import Order from "./views/Order.vue";
 
-import OrderGrid from "./components/Order/OrderGrid.vue";
-import HomeMenu from "./components/Home/HomeMenu.vue";
+// import OrderGrid from "./components/Order/OrderGrid.vue";
+// import HomeMenu from "./components/Home/HomeMenu.vue";
 
-import Progress from "./components/Order/Progress.vue";
+// import Progress from "./components/Order/Progress.vue";
 
 export default {
-  components: { HomeMenu, Order, Progress, OrderGrid },
+  // components: { HomeMenu, Order, Progress, OrderGrid },
   data() {
     return {
       foods: [
