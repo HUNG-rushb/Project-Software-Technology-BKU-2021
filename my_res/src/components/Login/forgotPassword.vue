@@ -5,30 +5,30 @@
             <section class = "col-12 col-sm-6 col-md-3">
                 <form class = "form-container">
                     <h2 class="text-center">
-                        Reset Password
+                        Đặt lại mật khẩu
                     </h2>
                     <br>
                     <div class="mb-3 form-floating">
                         <input type="text" v-model="phoneNumbers" class="form-control" placeholder="Enter Your Password ">
-                       <label for="floatingInput"> Phone Numbers</label>
+                       <label for="floatingInput"> Nhập số điện thoại</label>
                     </div>
                      <div class="mb-3 form-floating">
                         <input type="password" class="form-control" placeholder="Enter New Password" >
-                       <label for="floatingInput"> New Password</label>
+                       <label for="floatingInput"> Nhập mật khẩu mới</label>
                     </div>
                     <div class=" mb-3 row">
                         <div class="col-sm-6  form-floating">
                              <input type="text" class="form-control"  placeholder="Enter Code">
-                        <label for="floatingInput"> Enter Code</label>
+                        <label for="floatingInput"> Nhập mã xác nhận</label>
                         </div>
 
                         <div class="col-sm-6 d-flex justify-content-center " >
-                             <button type="submit" @click="generateOTP" class="btn btn-primary">Get code</button>
+                             <button type="submit" @click.prevent="generateOTP" class="btn btn-primary">Lấy mã xác nhận</button>
                         </div>
                     </div>
 <hr>
                     <div class="d-flex justify-content-center ">
-                        <button type="submit" class="btn btn-primary">Confirm</button>
+                        <button type="submit" class="btn btn-primary">Xác nhận</button>
                             
                     </div>
 
