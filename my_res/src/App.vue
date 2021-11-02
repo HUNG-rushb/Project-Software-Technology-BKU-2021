@@ -1,8 +1,8 @@
 <template>
   <div>
-    <!-- <Login/> -->
+
     <main>
-      <router-view></router-view>
+      <router-view />
     </main>
 
     <!-- <Progress /> -->
@@ -11,20 +11,21 @@
     <!-- <Order /> -->
     <!-- <HomeMenu /> -->
     <!-- <AddToast /> -->
+
   </div>
 </template>
 
 <script>
-import Login from "./views/Login.vue";
-import Order from "./views/Order.vue";
 
-import OrderGrid from "./components/Order/OrderGrid.vue";
-import HomeMenu from "./components/Home/HomeMenu.vue";
+// import Order from "./views/Order.vue";
 
-import Progress from "./components/Order/Progress.vue";
+// import OrderGrid from "./components/Order/OrderGrid.vue";
+// import HomeMenu from "./components/Home/HomeMenu.vue";
+
+// import Progress from "./components/Order/Progress.vue";
 
 export default {
-  components: { HomeMenu, Order, Progress, OrderGrid, Login },
+  // components: { HomeMenu, Order, Progress, OrderGrid },
   data() {
     return {
       foods: [
@@ -39,6 +40,7 @@ export default {
     };
   },
 };
+
 </script>
 
 <style>

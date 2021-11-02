@@ -1,5 +1,5 @@
 <template>
-  <!-- data-aos="fade-right" -->
+  <!-- data-aos="fade-right" fixed-top -->
   <div>
     <nav
       class="navbar fixed-top navbar-expand-lg shadow-lg main-header"

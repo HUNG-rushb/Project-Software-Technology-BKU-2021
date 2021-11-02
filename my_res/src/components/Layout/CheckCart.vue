@@ -18,7 +18,7 @@
       aria-labelledby="offcanvasRightLabel"
     >
       <div class="offcanvas-header">
-        <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+        <h5 id="offcanvasRightLabel">Giỏ hàng của bạn</h5>
 
         <button
           type="button"
@@ -29,7 +29,7 @@
       </div>
 
       <div class="offcanvas-body">
-        <router-link class="btn btn-success" to="/order">
+        <router-link class="btn btn-success" to="/order/cart">
           Thanh toán
         </router-link>
       </div>
@@ -41,13 +41,6 @@
 import ShoppingCart from "./ShoppingCart.vue";
 
 export default {
-  // props: {
-  //   products: {
-  //     type: Array,
-  //     required: true,
-  //   },
-  // },
-
   data() {
     return {};
   },

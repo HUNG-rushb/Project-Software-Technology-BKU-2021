@@ -14,7 +14,7 @@
 
         <span class="badge rounded-pill bg-success">20.000 đồng</span>
 
-        <button class="btn btn-success shine">
+        <button class="btn btn-success shine" @click="addItemHandler">
           <i class="bi bi-cart-fill"></i> Mua
         </button>
 
@@ -26,10 +26,35 @@
 
 <script>
 import Button from "../shared/Button.vue";
+import { inject } from "vue";
 
 export default {
-  // props: {},
+  setup() {
+    const emitter = inject("emitter");
+
+    const addItem = () => {
+      emitter.emit("add-item");
+    };
+
+    return {
+      addItem,
+    };
+  },
+  methods: {
+    addItemHandler() {
+      this.addItem();
+      this.$store.commit({
+        type: "insertItem",
+        test: "example",
+      });
+    },
+  },
+
   components: { Button },
+  mounted() {},
+  // setup(){
+  //   const emitter = inject("emitter"); // Inject `emitter`
+  // }
 };
 </script>
 
