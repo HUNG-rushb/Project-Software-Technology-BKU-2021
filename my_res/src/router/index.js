@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Menu from "../views/Menu.vue";
 
+
 import Order from "../views/Order.vue";
 import YourCart from "../components/Order/YourCart.vue";
 import Destination from "../components/Order/Destination.vue";
@@ -9,6 +10,9 @@ import ConfirmOrder from "../components/Order/ConfirmOrder.vue";
 
 import Error_404 from "../views/Page_404.vue";
 import Test from "../views/Test.vue";
+
+import Feedback from "../views/Feedback.vue";
+import ThankU from "../components/Feedback/ThankU.vue"
 
 const routes = [
   { path: "/", redirect: "/home" },
@@ -21,6 +25,16 @@ const routes = [
     path: "/menu",
     name: "Menu",
     components: { default: Menu },
+  },
+  {
+    path: "/feedback",
+    name: "Feedback",
+    components: { default: Feedback },
+  },
+  {
+    path: "/thanku",
+    name: "ThankU",
+    components: { default: ThankU },
   },
   // {
   //   path: "/login",
