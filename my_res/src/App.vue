@@ -1,31 +1,13 @@
 <template>
   <div>
-
     <main>
       <router-view />
     </main>
-
-    <!-- <Progress /> -->
-    <!-- <OrderGrid /> -->
-
-    <!-- <Order /> -->
-    <!-- <HomeMenu /> -->
-    <!-- <AddToast /> -->
-
   </div>
 </template>
 
 <script>
-
-// import Order from "./views/Order.vue";
-
-// import OrderGrid from "./components/Order/OrderGrid.vue";
-// import HomeMenu from "./components/Home/HomeMenu.vue";
-
-// import Progress from "./components/Order/Progress.vue";
-
 export default {
-  // components: { HomeMenu, Order, Progress, OrderGrid },
   data() {
     return {
       foods: [
@@ -40,7 +22,6 @@ export default {
     };
   },
 };
-
 </script>
 
 <style>
