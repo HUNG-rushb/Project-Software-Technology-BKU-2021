@@ -1,9 +1,16 @@
 <template>
-  <div></div>
+  <div>
+    <router-view />
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  components: {},
+};
 </script>
 
 <style scoped></style>
