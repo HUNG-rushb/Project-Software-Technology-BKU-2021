@@ -1,17 +1,18 @@
 <template>
   <div>
-    <!-- <router-view></router-view> -->
-
-    <Test />
+    <router-link to="/">Home</router-link> |
+    <router-link to="/feedback">FeedBack</router-link>
+    <router-view />
   </div>
 </template>
 
 <script>
-import Test from "./views/Test.vue";
+import Home from './views/Home.vue'
+import Feedback from './views/Feedback.vue'
 
 export default {
-  components: { Test },
-};
+  components: { Feedback, Home },
+}
 </script>
 
 <style>
