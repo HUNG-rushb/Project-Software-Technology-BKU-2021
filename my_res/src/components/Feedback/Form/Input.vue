@@ -1,21 +1,21 @@
 <template>
-    <div class="wrap">
-        <div class="form-group">
+    <form class="form" method="POST" @submit="checkForm">
+        <div class="form-group" :class="invalidName">
             <label for="fullname" class="form-label">
                 Tên của bạn
                 <span style="color: red;">*</span>
             </label>
-            <input id="fullname" name="fullname" type="text" placeholder="Nhập vào tên của bạn" class="form-control">
-            <span class="form-message"></span>
+            <input id="fullname" name="fullname" type="text" v-model="name" placeholder="Nhập vào tên của bạn" class="form-control">
+            <span class="form-message">{{ nameMsg }}</span>
         </div>
         
-        <div class="form-group">
+        <div class="form-group" :class="invalidPhone">
             <label for="email" class="form-label">
                 Số điện thoại của bạn
                 <span style="color: red;">*</span>
             </label>
-            <input id="phone" name="phone" type="tel" placeholder="Nhập vào số điện thoại của bạn" class="form-control">
-            <span class="form-message"></span>
+            <input id="phone" name="phone" type="tel" v-model="phone" placeholder="Nhập vào số điện thoại của bạn" class="form-control">
+            <span class="form-message">{{ phoneMsg }}</span>
         </div>
         
         <div class="form-group">
@@ -23,28 +23,92 @@
             <textarea class="form-control" placeholder="Nhập vào chi tiết đánh giá" id="floatingTextarea"></textarea>
         </div>
         
-        <div class="form-group">
+        <div class="form-group"> 
             <div class="row g-0">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <router-link to="/" class="form-submit cancel">Hủy</router-link>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <router-link to="/thanku" class="form-submit send">Gửi</router-link>
+                    <button class="form-submit send" @click="showModal">Gửi</button>
+                    <ThankU v-show="isModalVisible" @close="closeModal"/>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </template>
 
-// <script>
-// export default {
-//     data() {
-//         return {
+<script>
+import ThankU from '../ThankU.vue'
+export default {
+    components: { ThankU },
+    data() {
+        return {
+            name: null,
+            phone: null,
+            nameMsg: '',
+            phoneMsg: '',
+            invalidName: '',
+            invalidPhone: '',
+            isPhone: false,
+            isName: false,
+            isModalVisible: false,
+        }
+    },
+    methods: {
+        checkForm(e) {
+            // if (this.name && this.phone) return true;
+            this.nameMsg = '';
+            this.phoneMsg = '';
+            this.invalidName = '';
+            this.invalidPhone = '';
+            this.isPhone = true;
+            this.isName = true;
 
-//         }
-//     }
-// }
-// </script>
+            var hasNumber = /\d/;
+            if (hasNumber.test(this.name)) {
+                this.nameMsg = 'Tên không đúng định dạng';
+                this.invalidName = 'invalid';
+                this.isName = false;
+            }
+            var reWhiteSpace = new RegExp(/^\s+$/);
+            if (reWhiteSpace.test(this.name) || !this.name) {
+                this.nameMsg = 'Vui lòng nhập vào tên';
+                this.invalidName = 'invalid';
+                this.isName = false;
+            }
+        
+            var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+            if (vnf_regex.test(this.phone) == false ) {
+                this.phoneMsg = 'Số điện thoại của bạn không đúng định dạng!';
+                this.invalidPhone = 'invalid';
+                this.isPhone = false;
+            }
+            if (!this.phone) {
+                this.phoneMsg = 'Bạn chưa điền số điện thoại!';
+                this.invalidPhone = 'invalid';
+                this.isPhone = false;
+            }
+            
+            e.preventDefault();
+        },
+        showModal() {
+            console.log(this.name)
+            if (this.isName && this.isPhone) {
+                this.isModalVisible = true;
+            }
+        },
+        closeModal() {
+            this.isModalVisible = false;
+        },
+    // watch: {
+    //     thing: function () {
+    //         this.$dispatch('nameHasChanged', this.name);
+    //         this.$dispatch('phoneHasChanged', this.phone)
+    //     }
+    // },
+    }
+}
+</script>
 
 <style scoped>
 .form-group {
@@ -73,9 +137,11 @@
 .form-control:hover {
     border-color: #1dbfaf;
 }
-.form-group.invalid .form-control,
-.form-group.invalid .form-message {
+.form-group.invalid .form-control {
     border-color: #f33a58;
+}
+.form-group.invalid .form-message {
+    color: #f33a58;
 }
 .form-message {
     font-size: 12px;
@@ -114,5 +180,60 @@
     .form-submit {
         width: 100%;
     }
+}
+
+
+.feedback__modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    animation: fadeIn ease-in 0.3s;
+    z-index: 1;
+}
+.feedback__overlay {
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.9;
+    height: 100%;
+    width: 100%;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    height: 80%;
+    margin: auto;
+    padding: 24px 16px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+img {
+    width: 300px;
+    margin-bottom: 20px;
+}
+.msg p {
+    margin-bottom: 6px;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+}
+.close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 30px;
+    text-decoration: none;
 }
 </style>
