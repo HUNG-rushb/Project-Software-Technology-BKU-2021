@@ -5,16 +5,16 @@
                 Tên của bạn
                 <span style="color: red;">*</span>
             </label>
-            <input id="fullname" name="fullname" type="text" v-model="name" placeholder="Nhập vào tên của bạn" class="form-control">
+            <input type="text" v-model="name" @blur="checkValidName" placeholder="Nhập vào tên của bạn" class="form-control">
             <span class="form-message">{{ nameMsg }}</span>
         </div>
         
         <div class="form-group" :class="invalidPhone">
-            <label for="email" class="form-label">
+            <label for="phone" class="form-label">
                 Số điện thoại của bạn
                 <span style="color: red;">*</span>
             </label>
-            <input id="phone" name="phone" type="tel" v-model="phone" placeholder="Nhập vào số điện thoại của bạn" class="form-control">
+            <input type="tel" v-model="phone" @blur="checkValidPhone" placeholder="Nhập vào số điện thoại của bạn" class="form-control">
             <span class="form-message">{{ phoneMsg }}</span>
         </div>
         
@@ -29,7 +29,8 @@
                     <router-link to="/" class="form-submit cancel">Hủy</router-link>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <button class="form-submit send" @click="showModal">Gửi</button>
+                    <button @click="showModal" class="form-submit send">Gửi</button>
+                    
                     <ThankU v-show="isModalVisible" @close="closeModal"/>
                 </div>
             </div>
@@ -56,12 +57,13 @@ export default {
     },
     methods: {
         checkForm(e) {
-            // if (this.name && this.phone) return true;
+            this.checkValidName();
+            this.checkValidPhone();
+            e.preventDefault();
+        },
+        checkValidName() {
             this.nameMsg = '';
-            this.phoneMsg = '';
             this.invalidName = '';
-            this.invalidPhone = '';
-            this.isPhone = true;
             this.isName = true;
 
             var hasNumber = /\d/;
@@ -76,7 +78,12 @@ export default {
                 this.invalidName = 'invalid';
                 this.isName = false;
             }
-        
+        },
+        checkValidPhone() {
+            this.phoneMsg = '';
+            this.invalidPhone = '';
+            this.isPhone = true;
+
             var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
             if (vnf_regex.test(this.phone) == false ) {
                 this.phoneMsg = 'Số điện thoại của bạn không đúng định dạng!';
@@ -88,11 +95,8 @@ export default {
                 this.invalidPhone = 'invalid';
                 this.isPhone = false;
             }
-            
-            e.preventDefault();
         },
         showModal() {
-            console.log(this.name)
             if (this.isName && this.isPhone) {
                 this.isModalVisible = true;
             }
@@ -100,13 +104,13 @@ export default {
         closeModal() {
             this.isModalVisible = false;
         },
-    // watch: {
-    //     thing: function () {
-    //         this.$dispatch('nameHasChanged', this.name);
-    //         this.$dispatch('phoneHasChanged', this.phone)
-    //     }
-    // },
-    }
+        // watch: {
+        //     thing: function () {
+        //         this.$dispatch('nameHasChanged', this.name);
+        //         this.$dispatch('phoneHasChanged', this.phone)
+        //     }
+        // },
+        }
 }
 </script>
 
@@ -180,60 +184,5 @@ export default {
     .form-submit {
         width: 100%;
     }
-}
-
-
-.feedback__modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    animation: fadeIn ease-in 0.3s;
-    z-index: 1;
-}
-.feedback__overlay {
-    position: absolute;
-    background-color: #fff;
-    opacity: 0.9;
-    height: 100%;
-    width: 100%;
-}
-
-.wrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 85%;
-    height: 80%;
-    margin: auto;
-    padding: 24px 16px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    background-color: #fff;
-}
-img {
-    width: 300px;
-    margin-bottom: 20px;
-}
-.msg p {
-    margin-bottom: 6px;
-    font-size: 18px;
-    font-weight: 500;
-    text-align: center;
-}
-.close {
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 30px;
-    text-decoration: none;
 }
 </style>
