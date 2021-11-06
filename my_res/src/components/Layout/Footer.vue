@@ -1,10 +1,12 @@
 <template>
   <div loading="lazy">
-    <GoogleMap />
-
     <BackToTop />
 
-    <footer class="footer-distributed" data-aos="zoom-in-up">
+    <footer
+      class="footer-distributed"
+      data-aos="zoom-in-up"
+      data-aos-once="true"
+    >
       <div class="footer-left">
         <h3>Món Việt</h3>
         <br />
@@ -53,12 +55,10 @@
 </template>
 
 <script>
-import GoogleMap from "../Home/Google Map/GoogleMap.vue";
 import BackToTop from "./BackToTop.vue";
-// import GoogleMap from "../components/Layout/Google Map/GoogleMap.vue";
 
 export default {
-  components: { GoogleMap, BackToTop },
+  components: { BackToTop },
 };
 </script>
 

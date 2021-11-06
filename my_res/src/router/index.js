@@ -1,18 +1,21 @@
 import { createRouter, createWebHistory } from "vue-router";
+
+import Login from "../components/Login/Login.vue";
+import ForgotPassword from "../components/Login/ForgotPassword.vue";
+import Register from "../components/Register/Register.vue";
+
 import Home from "../views/Home.vue";
 import Menu from "../views/Menu.vue";
-
 
 import Order from "../views/Order.vue";
 import YourCart from "../components/Order/YourCart.vue";
 import Destination from "../components/Order/Destination.vue";
 import ConfirmOrder from "../components/Order/ConfirmOrder.vue";
 
+import Feedback from "../views/Feedback.vue";
+
 import Error_404 from "../views/Page_404.vue";
 import Test from "../views/Test.vue";
-
-import Feedback from "../views/Feedback.vue";
-import ThankU from "../components/Feedback/ThankU.vue"
 
 const routes = [
   { path: "/", redirect: "/home" },
@@ -22,30 +25,26 @@ const routes = [
     components: { default: Home },
   },
   {
+    path: "/login",
+    name: "Login",
+    components: { default: Login },
+  },
+  {
+    path: "/register",
+    name: "Register",
+    components: { default: Register },
+  },
+  {
+    path: "/resetpassword",
+    name: "ForgotPasword",
+    components: { default: ForgotPassword },
+  },
+  {
     path: "/menu",
     name: "Menu",
     components: { default: Menu },
   },
-  {
-    path: "/feedback",
-    name: "Feedback",
-    components: { default: Feedback },
-  },
-  {
-    path: "/thanku",
-    name: "ThankU",
-    components: { default: ThankU },
-  },
-  // {
-  //   path: "/login",
-  //   name: "Login",
-  //   components: { default: Login },
-  // },
-  // {
-  //   path: "/register",
-  //   name: "Register",
-  //   components: { default: Register },
-  // },
+
   {
     path: "/order",
     name: "Order",
@@ -67,6 +66,11 @@ const routes = [
         component: ConfirmOrder,
       },
     ],
+  },
+  {
+    path: "/feedback",
+    name: "Feedback",
+    components: { default: Feedback },
   },
   { path: "/:notFound(.*)", component: Error_404 },
   {

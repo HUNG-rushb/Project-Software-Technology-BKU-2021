@@ -1,31 +1,17 @@
 <template>
   <div>
-
     <main>
-      <router-view />
+      <router-view v-slot="slotProps">
+        <transition name="fade" mode="out-in">
+          <component :is="slotProps.Component"></component>
+        </transition>
+      </router-view>
     </main>
-
-    <!-- <Progress /> -->
-    <!-- <OrderGrid /> -->
-
-    <!-- <Order /> -->
-    <!-- <HomeMenu /> -->
-    <!-- <AddToast /> -->
-
   </div>
 </template>
 
 <script>
-
-// import Order from "./views/Order.vue";
-
-// import OrderGrid from "./components/Order/OrderGrid.vue";
-// import HomeMenu from "./components/Home/HomeMenu.vue";
-
-// import Progress from "./components/Order/Progress.vue";
-
 export default {
-  // components: { HomeMenu, Order, Progress, OrderGrid },
   data() {
     return {
       foods: [
@@ -40,7 +26,6 @@ export default {
     };
   },
 };
-
 </script>
 
 <style>
@@ -66,5 +51,23 @@ body {
   /* font-family: "Montserrat", sans-serif; */
   margin: 0;
   height: 100%;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: opacity 0.3s ease-out;
+}
+
+.fade-leave-active {
+  transition: opacity 0.3s ease-in;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
 }
 </style>
