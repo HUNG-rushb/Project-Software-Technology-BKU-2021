@@ -9,7 +9,7 @@
     <div class="row" id="menu">
       <!-- <FoodItem /> -->
       <div class="col-lg-9 col-md-9 col-sm-12" id="left_col">
-        <FoodItem />
+        <FoodItemEdit />
       </div>
       <div class="col-lg-3 col-md-3 col-sm-12" id="right_col">
         <div>
@@ -78,19 +78,21 @@
 </template>
 
 <script>
-import FoodItem from '../components/Menu/FoodItem.vue'
-// import Grid from "../components/Menu/Grid.vue";
+// import FoodItem from '../components/Menu/FoodItem.vue'
+import FoodItemEdit from "../components/Menu/FoodItemEdit.vue";
 // import Header from "../components/Header.vue";
+import DeleteConfirm from "../components/Menu/DeleteConfirm.vue";
+import EditForm from "../components/Menu/EditForm.vue";
 
 import Header from "../components/Layout/Header.vue";
 import Footer from "../components/Layout/Footer.vue";
 import CheckCart from "../components/Layout/CheckCart.vue";
 
 export default {
-  name: "Menu",
+  name: "MenuEdit",
   components: {
-    FoodItem,
-    // Grid,
+    FoodItemEdit,
+    // GridEdit,
     Header,
     CheckCart,
     Footer,
