@@ -156,16 +156,19 @@
         </div>
       </form>
     </div>
+
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from "../Layout/Header.vue";
+import Footer from "../Layout/Footer.vue";
 import Progress from "./Progress.vue";
 import tphcm from "./tphcm";
 
 export default {
-  components: { Progress, Header },
+  components: { Progress, Header, Footer },
   data() {
     return {
       recvName: "",
