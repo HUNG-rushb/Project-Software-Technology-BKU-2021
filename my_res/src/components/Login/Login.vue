@@ -6,7 +6,7 @@
       <section class="row justify-content-center">
         <section class="col-12 col-sm-6 col-md-3">
           <form class="form-container">
-            <h2><i class="bi bi-house"></i>Member Login</h2>
+            <h2><i class="bi bi-house"></i>Đăng Nhập</h2>
             <br />
             <div class="mb-3 form-floating">
               <input
@@ -18,7 +18,7 @@
                 aria-describedby="PhoneHelp"
                 placeholder="Enter Your Phone Numbers"
               />
-              <label for="floatingInput"> Phone Numbers</label>
+              <label for="floatingInput"> Số điện thoại</label>
               <div
                 id="validationServerUsernameFeedback"
                 class="invalid-feedback"
@@ -33,7 +33,7 @@
                 id="exampleInputPassword1"
                 placeholder="Enter Your Password"
               />
-              <label for="floatingInput"> Your Password</label>
+              <label for="floatingInput"> Mật khẩu</label>
             </div>
             <div class="mb-3 form-check">
               <input
@@ -43,23 +43,23 @@
                 id="exampleCheck1"
               />
               <label class="form-check-label" for="exampleCheck1"
-                >Remember me</label
+                >Ghi nhớ tài khoản</label
               >
             </div>
             <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-primary">Login</button>
+              <button type="submit" class="btn btn-primary">Đăng nhập</button>
             </div>
             <div class="text-center">
               <router-link class="small" to="/resetpassword"
-                >Forgot password?</router-link
+                >Quên mật khẩu?</router-link
               >
             </div>
             <hr />
-            <p class="small text-center">Not a Member ?</p>
+            <p class="small text-center">Bạn đã có tài khoản chưa ?</p>
             <div class="d-flex justify-content-center">
               <router-link to="/register">
                 <button type="submit" class="btn btn-primary signup">
-                  Sign up
+                  Đăng kí
                 </button>
               </router-link>
             </div>
@@ -94,11 +94,11 @@ export default {
       if (this.phoneNumbers !== "") {
         if (vnf_regex.test(this.phoneNumbers) == false) {
           this.isphone = true;
-          this.message = "Phone numbers dose not exit.";
+          this.message = "Số điện thoại không tồn tại.";
         }
       } else {
         this.isphone = true;
-        this.message = "Please enter phone number.";
+        this.message = "Hãy nhập số điện thoại của bạn.";
       }
     },
     saveinfo() {
@@ -118,12 +118,12 @@ export default {
 }, */
 
 #login {
-  background-image: linear-gradient(to bottom right, #cae9ac, #666464);
+  background-image: url('../../assets/background.jpg');
+  background-size: cover;
 }
 
 .form-container {
-  /* position: absolute; */
-  margin-top: 10rem;
+  margin-top: 6rem;
   margin-bottom: 5rem;
   top: 10vh;
   background: #fff;
@@ -131,9 +131,7 @@ export default {
   border-radius: 20px;
   box-shadow: 0px 0px 10px 0px #000;
   width: 400px;
+  background-image: linear-gradient(to bottom right, #e9dcdc, #fef2e2)
 }
 
-.signup {
-  color: #fff;
-}
 </style>
