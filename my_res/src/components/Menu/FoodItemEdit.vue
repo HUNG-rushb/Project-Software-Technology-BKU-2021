@@ -1,4 +1,5 @@
 <template>
+  <button class="btn btn-primary center" id="add"> Thêm món </button>
   <div class="container overflow-hidden">
     <div class="row gy-5">
       <div class="col-lg-4 col-md-6 col-sm-12" v-for="product in products" :key="product.food_id">
@@ -11,17 +12,36 @@
           <div class="card-body">
             <h5 class="card-title">{{product.food_name}}</h5>
             <p class="card-text">Giá: {{product.food_price}} VNĐ</p>
-            <button class="btn btn-primary center">Mua</button>
+            <!-- <router-link to="/menuedit/editform"> -->
+              <button class="btn btn-secondary center" id="update"> Chỉnh sửa </button>
+            <!-- </router-link> -->
+            <!-- <router-link to="/menuedit/deleteconfirm"> -->
+              <button class="btn btn-danger center" id="delete"> Xóa </button>
+            <!-- </router-link> -->
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  
+
+
 </template>
 
+
+
 <script>
+
+import DeleteConfirm from "./DeleteConfirm.vue";
+import EditForm from "./EditForm.vue";
+
 export default {
-  name: "FoodItem",
+  name: "FoodItemEdit",
+  components: {
+    DeleteConfirm,
+    EditForm,
+  },
   data: () => {
     return {
       products: [
@@ -95,11 +115,22 @@ export default {
 </script>
 
 <style>
-.center {
-  text-align: center;
-}
+  .center {
+    text-align: center;
+  }
 
-img {
+  #delete {
+    float: right;
+    width: 90px;
+  }
+
+  #add {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    margin-left: 25px;
+  }
+
+  img {
   height: 220px;
   object-fit: cover;
 }
