@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div id ="rg">
+    <Header/>
     <section class="container-fluid">
       <section class="row justify-content-center">
         <section class="col-12 col-sm-6 col-md-3">
@@ -108,11 +109,18 @@
         </section>
       </section>
     </section>
+     <Footer />
   </div>
 </template>
 
 <script>
+import Header from "../Layout/Header.vue";
+import Footer from "../Layout/Footer.vue";
 export default {
+  components:{
+    Header,
+    Footer
+  },
   data() {
     return {
       isfirstname: null,
@@ -164,13 +172,21 @@ export default {
 </script>
 
 <style scoped>
+#rg{
+  background-image: url('../../assets/background.jpg');
+  background-size: cover;
+}
 .form-container {
-  position: absolute;
+  /* position: absolute; */
+  margin-top: 5rem;
+  /* padding-right: 10rem; */
   top: 5vh;
   background: #fff;
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0px 0px 10px 0px #000;
-  /* width: 450px; */
+  width: 400px;
+  
+  background-image: linear-gradient(to bottom right, #e9dcdc, #fef2e2)
 }
 </style>

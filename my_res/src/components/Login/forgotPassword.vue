@@ -1,5 +1,6 @@
 <template>
-   <div>
+   <div id = "FPW">
+       <Header/>
     <section class ="container-fluid">
         <section class = "row justify-content-center">
             <section class = "col-12 col-sm-6 col-md-3">
@@ -26,21 +27,34 @@
                              <button type="submit" @click.prevent="generateOTP" class="btn btn-primary">Lấy mã xác nhận</button>
                         </div>
                     </div>
-<hr>
+                    <br>
                     <div class="d-flex justify-content-center ">
                         <button type="submit" class="btn btn-primary">Xác nhận</button>
                             
                     </div>
+                                <hr />
+                        <p class="small text-center">Quay lại đăng nhập ?</p>
+                        <div class="d-flex justify-content-center">
+                        <router-link to="/login">
+                            <button class="btn btn-primary">Đăng nhập</button>
+                        </router-link>
+                        </div>
 
                 </form>
             </section>
         </section>
     </section>
+    <Footer/>
   </div>
 </template>
 
 <script>
+import Header from "../Layout/Header.vue";
+import Footer from "../Layout/Footer.vue";
 export default {
+components:{
+        Header,Footer
+    },
 data(){
     return{
         phoneNumbers: ''
@@ -64,14 +78,21 @@ methods:{
 </script>
 
 <style scoped>
+#FPW {
+  background-image: url('../../assets/background.jpg');
+  background-size: cover;
+}
 .form-container{
-    position: absolute;
+
+    /* position: absolute; */
+    margin-top: 5rem;
     top: 140px;
     background: #fff;
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0px 0px 10px 0px #000;
-    /* width: 450px; */
+    width: 400px;
+    background-image: linear-gradient(to bottom right, #e9dcdc, #fef2e2)
 }
 
 </style>

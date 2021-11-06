@@ -118,12 +118,12 @@ export default {
 }, */
 
 #login {
-  background-image: linear-gradient(to bottom right, #cae9ac, #666464);
+  background-image: url('../../assets/background.jpg');
+  background-size: cover;
 }
 
 .form-container {
-  /* position: absolute; */
-  margin-top: 10rem;
+  margin-top: 6rem;
   margin-bottom: 5rem;
   top: 10vh;
   background: #fff;
@@ -131,9 +131,7 @@ export default {
   border-radius: 20px;
   box-shadow: 0px 0px 10px 0px #000;
   width: 400px;
+  background-image: linear-gradient(to bottom right, #e9dcdc, #fef2e2)
 }
 
-.signup {
-  color: #fff;
-}
 </style>
