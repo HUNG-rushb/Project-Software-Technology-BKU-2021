@@ -98,7 +98,8 @@ export default {
 }
 #menu {
   padding-top: 0;
-  margin-top: 4rem;
+  margin-top: 14rem;
+  margin-bottom: 14rem;
 }
 .left {
   float: left;

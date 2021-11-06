@@ -13,7 +13,6 @@ import Destination from "../components/Order/Destination.vue";
 import ConfirmOrder from "../components/Order/ConfirmOrder.vue";
 
 import Feedback from "../views/Feedback.vue";
-import ThankU from "../components/Feedback/ThankU.vue";
 
 import Error_404 from "../views/Page_404.vue";
 import Test from "../views/Test.vue";
@@ -72,11 +71,6 @@ const routes = [
     path: "/feedback",
     name: "Feedback",
     components: { default: Feedback },
-  },
-  {
-    path: "/thanku",
-    name: "ThankU",
-    components: { default: ThankU },
   },
   { path: "/:notFound(.*)", component: Error_404 },
   {

@@ -1,5 +1,4 @@
 <template>
-  <!-- <h1>Hello World</h1> -->
   <div class="main">
     <div class="container custom">
       <div class="row">
@@ -25,9 +24,15 @@ export default {
 <style scoped>
 .main {
   background-color: #b3b3b3;
-  padding: 32px 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
 }
 .custom {
   background-color: #fff;
+  margin: auto;
 }
 </style>
