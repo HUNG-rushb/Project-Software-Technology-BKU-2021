@@ -14,6 +14,7 @@
         <img
           src="../../assets/images/Footer/logo.webp"
           alt="Bộ Công Thương"
+          id="bluered"
           loading="lazy"
         /><br />
 
@@ -73,6 +74,10 @@ export default {
 /* * {
   font-family: Open Sans;
 } */
+
+#bluered {
+  max-height: 4rem;
+}
 
 section {
   width: 100%;

@@ -126,11 +126,11 @@
 
 <script>
 import Header from "../Layout/Header.vue";
-import Button from "../shared/Button.vue";
+
 import Progress from "./Progress.vue";
 
 export default {
-  components: { Progress, Header, Button },
+  components: { Progress, Header },
 };
 </script>
 <style scoped>
