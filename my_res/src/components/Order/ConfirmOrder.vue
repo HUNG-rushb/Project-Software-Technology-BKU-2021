@@ -121,16 +121,19 @@
         </div>
       </div>
     </div>
+
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from "../Layout/Header.vue";
+import Footer from "../Layout/Footer.vue";
 
 import Progress from "./Progress.vue";
 
 export default {
-  components: { Progress, Header },
+  components: { Progress, Header, Footer },
 };
 </script>
 <style scoped>
