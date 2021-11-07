@@ -81,8 +81,10 @@
 
 <script>
 
+
 import FoodItem from '../components/Menu/FoodItem.vue'
 // import Grid from "../components/Menu/Grid.vue";
+
 
 // import Header from "../components/Header.vue";
 
@@ -138,7 +140,9 @@ export default {
 #sort_label,
 #search_label {
 
+
   padding-top: 8px;
+
 
 }
 .option {
@@ -154,7 +158,6 @@ export default {
 label, .option, #sort, .form-control {
   font-size: 90%;
 }
-
 
 
 </style>
