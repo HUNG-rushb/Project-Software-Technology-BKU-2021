@@ -2,7 +2,11 @@
   <div loading="lazy">
     <BackToTop />
 
-    <footer class="footer-distributed" data-aos="zoom-in-up">
+    <footer
+      class="footer-distributed"
+      data-aos="zoom-in-up"
+      data-aos-once="true"
+    >
       <div class="footer-left">
         <h3>Món Việt</h3>
         <br />
@@ -10,6 +14,7 @@
         <img
           src="../../assets/images/Footer/logo.webp"
           alt="Bộ Công Thương"
+          id="bluered"
           loading="lazy"
         /><br />
 
@@ -69,6 +74,10 @@ export default {
 /* * {
   font-family: Open Sans;
 } */
+
+#bluered {
+  max-height: 4rem;
+}
 
 section {
   width: 100%;

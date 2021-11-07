@@ -10,6 +10,7 @@
       >
         <div class="d-flex">
           <div class="toast-body">
+            <i class="bi bi-check-circle-fill"></i>
             <b>Thêm vào giỏ hàng thành công!</b>
           </div>
 
@@ -38,8 +39,7 @@ export default {
     const emitter = inject("emitter"); // Inject `emitter`
 
     const alertToast = () => {
-      var toastLive = document.getElementById("liveToast");
-      var toast = new Toast(toastLive);
+      var toast = new Toast(document.getElementById("liveToast"));
       toast.show();
     };
 

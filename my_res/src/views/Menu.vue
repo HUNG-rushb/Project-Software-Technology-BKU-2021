@@ -9,6 +9,7 @@
     <div class="row" id="menu">
       <!-- <FoodItem /> -->
       <div class="col-lg-9 col-md-9 col-sm-12" id="left_col">
+
         <FoodItem />
       </div>
       <div class="col-lg-3 col-md-3 col-sm-12" id="right_col">
@@ -25,6 +26,7 @@
           <!-- <button class="btn btn-light" id="searchbtn">Tìm</button> -->
 
           <br> <br> <br> <br> <br>
+
 
           <label for="sort" class="left" id="sort_label">Sắp xếp theo: </label>
           <select id="sort" class="form-select">
@@ -78,8 +80,12 @@
 </template>
 
 <script>
+
+
 import FoodItem from '../components/Menu/FoodItem.vue'
 // import Grid from "../components/Menu/Grid.vue";
+
+
 // import Header from "../components/Header.vue";
 
 import Header from "../components/Layout/Header.vue";
@@ -87,10 +93,12 @@ import Footer from "../components/Layout/Footer.vue";
 import CheckCart from "../components/Layout/CheckCart.vue";
 
 export default {
+
   name: "Menu",
   components: {
     FoodItem,
     // Grid,
+
     Header,
     CheckCart,
     Footer,
@@ -108,18 +116,22 @@ export default {
 }
 #menu {
   padding-top: 0;
+
   margin-top: 4rem;
+
 }
 .left {
   float: left;
 }
 .form-check {
   /* float: right; */
+
   margin-left: 90px;
 }
 .form-select {
   /* width: 200px; */
   margin-left: 90px;
+
   padding-left: 10px;
 }
 #sort {
@@ -127,13 +139,18 @@ export default {
 }
 #sort_label,
 #search_label {
+
+
   padding-top: 8px;
+
+
 }
 .option {
   width: 100px;
 }
 #search {
   width: 200px;
+
   margin-left: 30px;
   display: inline-block;
 }

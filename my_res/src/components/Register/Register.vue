@@ -1,11 +1,12 @@
 <template>
-  <div>
+  <div id="rg">
+    <Header />
     <section class="container-fluid">
       <section class="row justify-content-center">
         <section class="col-12 col-sm-6 col-md-3">
           <form class="form-container">
             <h2 class="text-center">
-              Register
+              Đăng kí tài khoản
             </h2>
             <br />
             <div class=" mb-3 row g-3">
@@ -18,27 +19,27 @@
                   @blur="checkfirstname"
                   placeholder="Enter Your first name"
                 />
-                <label for="floatingInput"> First Name</label>
+                <label for="floatingInput"> Họ và tên đệm</label>
                 <div class="invalid-feedback">
-                  Please enter first name.
+                  Hãy nhập họ và tên đệm.
                 </div>
               </div>
 
               <div class="col-sm-6  form-floating">
                 <input
-                  type="tẽt"
+                  type="text"
                   v-model="lastName"
                   class="form-control"
                   :class="{ 'is-invalid': islastname }"
                   @blur="checklastname"
                   placeholder="Enter Your last name"
                 />
-                <label for="floatingInput"> Last Name</label>
+                <label for="floatingInput"> Tên</label>
                 <div
                   id="validationServerUsernameFeedback"
                   class="invalid-feedback"
                 >
-                  Please enter last name.
+                  Hãy nhập tên của bạn.
                 </div>
               </div>
             </div>
@@ -51,7 +52,7 @@
                 @blur="checkPhoneNumbers"
                 placeholder="Enter Your Phone Numbers"
               />
-              <label for="floatingInput">Phone Numbers</label>
+              <label for="floatingInput">Số điện thoại</label>
               <div
                 id="validationServerUsernameFeedback"
                 class="invalid-feedback"
@@ -68,12 +69,12 @@
                 @blur="checkaddress"
                 placeholder="Enter Your Address"
               />
-              <label for="floatingInput">Your Address</label>
+              <label for="floatingInput">Địa chỉ</label>
               <div
                 id="validationServerUsernameFeedback"
                 class="invalid-feedback"
               >
-                Please enter your address.
+                Hãy nhập địa chỉ của bạn.
               </div>
             </div>
             <div class="mb-3 form-floating">
@@ -85,34 +86,41 @@
                 @blur="checkpassword"
                 placeholder="Enter Your Password"
               />
-              <label for="floatingInput">Password</label>
+              <label for="floatingInput">Mật khẩu</label>
               <div
                 id="validationServerUsernameFeedback"
                 class="invalid-feedback"
               >
-                Please enter password.
+                Hãy nhập mật khẩu.
               </div>
             </div>
             <div class="d-flex justify-content-center ">
-              <button class="btn btn-primary">Register</button>
+              <button class="btn btn-primary">Đăng kí</button>
             </div>
 
             <hr />
-            <p class="small text-center">Are you a member?</p>
+            <p class="small text-center">Bạn đã có tài khoản chưa ?</p>
             <div class="d-flex justify-content-center">
               <router-link to="/login">
-                <button class="btn btn-primary">Login</button>
+                <button class="btn btn-primary">Đăng nhập</button>
               </router-link>
             </div>
           </form>
         </section>
       </section>
     </section>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Header from "../Layout/Header.vue";
+import Footer from "../Layout/Footer.vue";
 export default {
+  components: {
+    Header,
+    Footer,
+  },
   data() {
     return {
       isfirstname: null,
@@ -148,11 +156,11 @@ export default {
       if (this.phoneNumbers !== "") {
         if (vnf_regex.test(this.phoneNumbers) == false) {
           this.isphone = true;
-          this.message = "Phone numbers dose not exit.";
+          this.message = "Tài khoản không tồn tại.";
         }
       } else {
         this.isphone = true;
-        this.message = "Please enter phone number.";
+        this.message = "Hãy nhập số điện thoại.";
       }
     },
     checkpassword() {
@@ -164,13 +172,21 @@ export default {
 </script>
 
 <style scoped>
+#rg {
+  background-image: url("../../assets/background.jpg");
+  background-size: cover;
+}
 .form-container {
-  position: absolute;
+  /* position: absolute; */
+  margin-top: 5rem;
+  /* padding-right: 10rem; */
   top: 5vh;
   background: #fff;
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0px 0px 10px 0px #000;
-  /* width: 450px; */
+  width: 400px;
+
+  background-image: linear-gradient(to bottom right, #e9dcdc, #fef2e2);
 }
 </style>
