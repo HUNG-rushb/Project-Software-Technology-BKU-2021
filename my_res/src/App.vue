@@ -40,7 +40,6 @@ export default {
 /* #8e9189, #494449, #857f74, #eeefeb, #ddeac1  */
 * {
   box-sizing: border-box;
-  /* display: block; */
 }
 
 html {
