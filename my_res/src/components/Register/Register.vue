@@ -1,6 +1,6 @@
 <template>
-  <div id ="rg">
-    <Header/>
+  <div id="rg">
+    <Header />
     <section class="container-fluid">
       <section class="row justify-content-center">
         <section class="col-12 col-sm-6 col-md-3">
@@ -109,7 +109,7 @@
         </section>
       </section>
     </section>
-     <Footer />
+    <Footer />
   </div>
 </template>
 
@@ -117,9 +117,9 @@
 import Header from "../Layout/Header.vue";
 import Footer from "../Layout/Footer.vue";
 export default {
-  components:{
+  components: {
     Header,
-    Footer
+    Footer,
   },
   data() {
     return {
@@ -172,8 +172,8 @@ export default {
 </script>
 
 <style scoped>
-#rg{
-  background-image: url('../../assets/background.jpg');
+#rg {
+  background-image: url("../../assets/background.jpg");
   background-size: cover;
 }
 .form-container {
@@ -186,7 +186,7 @@ export default {
   border-radius: 20px;
   box-shadow: 0px 0px 10px 0px #000;
   width: 400px;
-  
-  background-image: linear-gradient(to bottom right, #e9dcdc, #fef2e2)
+
+  background-image: linear-gradient(to bottom right, #e9dcdc, #fef2e2);
 }
 </style>
