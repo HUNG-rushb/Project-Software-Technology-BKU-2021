@@ -23,6 +23,11 @@ const routes = [
     path: "/home",
     name: "Home",
     components: { default: Home },
+    // beforeEnter(to, from, next) {
+    //   console.log('users beforeEnter');
+    //   console.log(to, from);
+    //   next();
+    // },
   },
   {
     path: "/login",
@@ -93,5 +98,23 @@ const router = createRouter({
     return { left: 0, top: 0 };
   },
 });
+
+// router.beforeEach(function(to, from, next) {
+//   console.log("Global beforeEach");
+//   console.log(to, from);
+
+//   if (to.meta.needsAuth) {
+//     console.log("Needs auth!");
+//     next();
+//   } else {
+//     next();
+//   }
+// });
+
+// router.afterEach(function(to, from) {
+//   // sending analytics data
+//   console.log("Global afterEach");
+//   console.log(to, from);
+// });
 
 export default router;

@@ -1,12 +1,9 @@
 import { createStore } from "vuex";
+import newmenu from "../firebase/getMenu";
 
-export default createStore({
+const store = createStore({
   modules: {},
-  state: {
-    itemCount: 0,
 
-    isLoggedIn: false,
-  },
   mutations: {
     insertItem(state) {
       state.itemCount++;
@@ -20,6 +17,18 @@ export default createStore({
       return state.itemCount;
     },
   },
+
   actions: {},
   modules: {},
+
+  state: {
+    itemCount: 0,
+
+    isLoggedIn: false,
+
+    cart: [],
+    menu: newmenu,
+  },
 });
+
+export default store;
