@@ -26,6 +26,7 @@
             </p>
 
             <!-- https://shaack.com/projekte/bootstrap-input-spinner/ -->
+            <!-- value="1" -->
             <input
               type="number"
               min="1"

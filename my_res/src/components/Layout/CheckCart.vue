@@ -17,7 +17,7 @@
       id="offcanvasRight"
       aria-labelledby="offcanvasRightLabel"
     >
-      <div class="offcanvas-header">
+      <div class="offcanvas-header ">
         <h5 id="offcanvasRightLabel">Giỏ hàng của bạn</h5>
 
         <button
@@ -28,8 +28,20 @@
         ></button>
       </div>
 
-      <div class="offcanvas-body">
-        <ItemCard />
+      <div class="offcanvas-header ">
+        <h5 style="display:block;">{{ counter }} món</h5>
+      </div>
+
+      <div v-if="chosenFoods.length === 0" class="offcanvas-body">
+        Không có gì...
+      </div>
+      <div v-else class="offcanvas-body">
+        <ItemCard
+          v-for="food in chosenFoods"
+          :food="food"
+          :key="food.id"
+          :id="food.id"
+        />
 
         <router-link class="btn btn-success" to="/order/cart">
           Thanh toán
@@ -45,12 +57,17 @@ import ItemCard from "./ItemCard.vue";
 
 export default {
   data() {
-    return {};
+    return {
+      chosenFoods: this.$store.getters.products,
+    };
   },
 
+  computed: {
+    counter() {
+      return this.$store.getters.quantity;
+    },
+  },
   components: { ShoppingCart, ItemCard },
-
-  methods: {},
 };
 </script>
 
@@ -64,5 +81,9 @@ export default {
 
 .btn-success {
   width: 100%;
+}
+
+.offcanvas-header {
+  padding: 0.6rem;
 }
 </style>

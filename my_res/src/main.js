@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import store from "./store/index";
 
 // Action-on-scroll
 import AOS from "aos";
@@ -26,11 +26,7 @@ app.AOS = new AOS.init();
 //   .use(router)
 //   .mount("#app");
 
-app.use(store);
-app.use(router);
-
-// console.log(app);
-// console.log(store);
+app.use(store).use(router);
 
 router.isReady().then(() => {
   app.mount("#app");

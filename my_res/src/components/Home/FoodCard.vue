@@ -32,7 +32,7 @@
 import { inject } from "vue";
 
 export default {
-  props: ["food"],
+  props: ["food", "id"],
   setup() {
     const emitter = inject("emitter");
 
@@ -53,13 +53,12 @@ export default {
     addItemHandler() {
       this.addItem();
 
-      this.$store.commit({
-        type: "insertItem",
-      });
-
-      // this.$store.commit({
-      //   type: "insertItem",
+      // this.$store.dispatch("cart/addToCart", {
+      //   id: this.id,
       // });
+      this.$store.dispatch("addToCart", {
+        id: this.id,
+      });
     },
 
     foodDetailsHandler() {
