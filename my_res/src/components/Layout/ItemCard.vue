@@ -12,26 +12,26 @@
 
         <div class="col-md-8">
           <div class="card-body">
-            <!-- Tên món và giới thiệu  -->
-            <h4 class="card-title">Bún bò Huế</h4>
+            <h4 class="card-title">{{ food.name }}</h4>
 
-            <!-- <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </p> -->
-
-            <!-- https://shaack.com/projekte/bootstrap-input-spinner/ -->
-            <input
-              type="number"
-              min="1"
-              max="100"
-              step="1"
-              id="numberinput"
-              v-model="quantity"
-            />
+            <div class="food-card_order-count">
+              <div class="input-group mb-3">
+                <input
+                  type="number"
+                  min="1"
+                  max="100"
+                  step="1"
+                  value="1"
+                  id="numberinput"
+                  class="form-control input-manulator"
+                />
+                <!-- v-model="quantity" -->
+              </div>
+            </div>
 
             <!-- Delete Button  -->
             <button type="button" class="btn btn-danger">
-              <i class="bi bi-trash-fill"> Bỏ chọn</i>
+              <i class="bi bi-trash-fill"></i>
             </button>
           </div>
         </div>
@@ -44,7 +44,9 @@
 // $("input[type='number']").inputSpinner();
 
 export default {
+  props: ["food", "id"],
   data() {
+    console.log(this.food);
     return {
       quantity: null,
     };
@@ -71,10 +73,6 @@ img {
   transform: translateY(-50%);
 }
 
-/* #numberinput {
-  
-} */
-
 .btn {
   position: absolute;
   right: 1rem;
@@ -88,5 +86,17 @@ img {
 .btn:active,
 .btn:focus {
   transform: translateY(-1px);
+}
+
+.food-card_order-count input {
+  background: #f5f5f5;
+  border-color: #f5f5f5;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  text-align: center;
+}
+
+.food-card_order-count {
+  width: 5rem;
 }
 </style>

@@ -9,8 +9,7 @@
           data-aos="zoom-in-up"
           data-aos-once="true"
         >
-          <FoodCard :food="item" />
-          <!-- <p>{{ food.name }}</p> -->
+          <FoodCard :food="item" :id="item.id" />
         </div>
       </div>
     </div>
@@ -24,6 +23,7 @@ import getMenu from "../../firebase/getMenu";
 export default {
   components: { FoodCard },
   data() {
+    console.log(getMenu);
     return {
       menu: getMenu,
     };
