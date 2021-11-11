@@ -4,7 +4,7 @@
       <div class="row g-0">
         <div class="col-md-4">
           <img
-            src="../../assets/Order/bunbo.jpg"
+            src="../../assets/logo.jpg"
             class="img-fluid rounded-start"
             alt="..."
           />
@@ -12,33 +12,26 @@
 
         <div class="col-md-8">
           <div class="card-body">
-            <!-- Tên món và giới thiệu  -->
-            <h4 class="card-title">Bún bò Huế</h4>
+            <h4 class="card-title">{{ food.name }}</h4>
 
-            <p class="card-text">
-              Bún bò là một trong những đặc sản của xứ Huế, mặc dù món bún này
-              phổ biến trên cả ba miền ở Việt Nam và cả người Việt tại hải
-              ngoại.
-            </p>
-
-            <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </p>
-
-            <!-- https://shaack.com/projekte/bootstrap-input-spinner/ -->
-            <!-- value="1" -->
-            <input
-              type="number"
-              min="1"
-              max="100"
-              step="1"
-              id="numberinput"
-              v-model="quantity"
-            />
+            <div class="food-card_order-count">
+              <div class="input-group mb-3">
+                <input
+                  type="number"
+                  min="1"
+                  max="100"
+                  step="1"
+                  value="1"
+                  id="numberinput"
+                  class="form-control input-manulator"
+                />
+                <!-- v-model="quantity" -->
+              </div>
+            </div>
 
             <!-- Delete Button  -->
             <button type="button" class="btn btn-danger">
-              <i class="bi bi-trash-fill"> Bỏ chọn</i>
+              <i class="bi bi-trash-fill"></i>
             </button>
           </div>
         </div>
@@ -51,7 +44,9 @@
 // $("input[type='number']").inputSpinner();
 
 export default {
+  props: ["food", "id"],
   data() {
+    console.log(this.food);
     return {
       quantity: null,
     };
@@ -61,9 +56,9 @@ export default {
 
 <style scoped>
 .card {
-  border: 2px solid #494449;
+  /* border: 2px solid #494449; */
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-  background-image: url("../../assets/Order/lotus.jpg");
+  /* background-image: url("../../assets/Order/lotus.jpg"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -78,10 +73,6 @@ img {
   transform: translateY(-50%);
 }
 
-/* #numberinput {
-  
-} */
-
 .btn {
   position: absolute;
   right: 1rem;
@@ -95,5 +86,17 @@ img {
 .btn:active,
 .btn:focus {
   transform: translateY(-1px);
+}
+
+.food-card_order-count input {
+  background: #f5f5f5;
+  border-color: #f5f5f5;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  text-align: center;
+}
+
+.food-card_order-count {
+  width: 5rem;
 }
 </style>

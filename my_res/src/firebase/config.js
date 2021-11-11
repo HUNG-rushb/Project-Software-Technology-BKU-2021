@@ -1,5 +1,7 @@
-import firebase from "firebase/app";
-import "firebase/firestore";
+// import firebase from "firebase/app";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+// https://stackoverflow.com/questions/68929593/vue-2-export-default-imported-as-firebase-was-not-found-in-firebase-app
 
 const firebaseConfig = {
   apiKey: "AIzaSyAI1WERiMbynDZ_EyLBh34TdLH1niw5vNo",
@@ -15,5 +17,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const projectFirestore = firebase.firestore();
+const timeStamp = firebase.firestore.FieldValue.serverTimestamp;
 
-export { projectFirestore };
+export { projectFirestore, timeStamp };

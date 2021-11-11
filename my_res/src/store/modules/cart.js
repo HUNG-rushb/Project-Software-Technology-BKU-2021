@@ -1,13 +1,15 @@
-import { createStore } from "vuex";
-import menu from "../firebase/getMenu";
+import menu from "../../firebase/getMenu";
 
-const store = createStore({
-  state: {
-    // isLoggedIn: false,
-    items: [],
-    total: 0,
-    qty: 0,
+export default {
+  // namespaced: true,
+  state() {
+    return {
+      items: [],
+      total: 0,
+      qty: 0,
+    };
   },
+
   mutations: {
     addProductToCart(state, payload) {
       const productData = payload;
@@ -20,7 +22,6 @@ const store = createStore({
         state.items[productInCartIndex].qty++;
       } else {
         const newItem = {
-          name: productData.name,
           productId: productData.id,
           title: productData.title,
           image: productData.image,
@@ -33,7 +34,7 @@ const store = createStore({
       state.qty++;
       state.total += productData.price;
 
-      console.log(state.items);
+      console.log(this.items);
     },
 
     // removeProductFromCart(state, payload) {
@@ -61,6 +62,7 @@ const store = createStore({
     //   context.commit("removeProductFromCart", payload);
     // },
   },
+
   getters: {
     products(state) {
       return state.items;
@@ -72,7 +74,4 @@ const store = createStore({
       return state.qty;
     },
   },
-  modules: {},
-});
-
-export default store;
+};

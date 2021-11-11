@@ -1,8 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
-// import { createStore } from "vuex";
+import store from "./store/index";
 
 // Action-on-scroll
 import AOS from "aos";
@@ -11,7 +10,7 @@ import "aos/dist/aos.css";
 // Boostrap 5
 import "bootstrap";
 
-// miit plug in
+// miit plug-in
 import mitt from "mitt";
 
 const app = createApp(App);
