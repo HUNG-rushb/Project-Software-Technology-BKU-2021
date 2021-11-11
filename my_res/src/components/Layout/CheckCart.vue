@@ -29,6 +29,8 @@
       </div>
 
       <div class="offcanvas-body">
+        <ItemCard />
+
         <router-link class="btn btn-success" to="/order/cart">
           Thanh toán
         </router-link>
@@ -39,13 +41,14 @@
 
 <script>
 import ShoppingCart from "./ShoppingCart.vue";
+import ItemCard from "./ItemCard.vue";
 
 export default {
   data() {
     return {};
   },
 
-  components: { ShoppingCart },
+  components: { ShoppingCart, ItemCard },
 
   methods: {},
 };
@@ -57,5 +60,9 @@ export default {
   position: absolute;
   right: 1rem;
   top: 5rem;
+}
+
+.btn-success {
+  width: 100%;
 }
 </style>

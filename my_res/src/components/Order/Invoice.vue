@@ -48,12 +48,6 @@
                                           </tr>
 
                                           <tr>
-                                            <td>Service 1</td>
-                                            <td class="aligncenter">2</td>
-                                            <td class="alignright">$ 20.00</td>
-                                          </tr>
-
-                                          <tr>
                                             <td>Service 2</td>
                                             <td class="aligncenter">3</td>
                                             <td class="alignright">$ 10.00</td>
@@ -186,9 +180,11 @@ body {
   color: #999;
   padding: 20px;
 }
+
 .footer a {
   color: #999;
 }
+
 .footer p,
 .footer a,
 .footer unsubscribe,

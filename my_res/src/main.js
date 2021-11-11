@@ -2,7 +2,6 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-// import { createStore } from "vuex";
 
 // Action-on-scroll
 import AOS from "aos";
@@ -11,7 +10,7 @@ import "aos/dist/aos.css";
 // Boostrap 5
 import "bootstrap";
 
-// miit plug in
+// miit plug-in
 import mitt from "mitt";
 
 const app = createApp(App);
@@ -27,7 +26,11 @@ app.AOS = new AOS.init();
 //   .use(router)
 //   .mount("#app");
 
-app.use(store).use(router);
+app.use(store);
+app.use(router);
+
+// console.log(app);
+// console.log(store);
 
 router.isReady().then(() => {
   app.mount("#app");

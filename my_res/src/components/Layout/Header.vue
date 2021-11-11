@@ -48,6 +48,10 @@
               <a class="nav-link" href="#contact">Liên hệ</a>
               <!-- <router-link class="nav-link" to="/contact">Liên hệ</router-link> -->
             </li>
+
+            <li class="nav-item">
+              <router-link class="nav-link" to="/feedback">Góp ý</router-link>
+            </li>
           </ul>
 
           <form>
