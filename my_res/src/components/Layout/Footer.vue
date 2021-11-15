@@ -75,9 +75,9 @@ export default {
   font-family: Open Sans;
 } */
 
-#bluered {
+/* #bluered {
   max-height: 4rem;
-}
+} */
 
 section {
   width: 100%;

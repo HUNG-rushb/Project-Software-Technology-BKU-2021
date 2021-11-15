@@ -4,7 +4,7 @@
       <div class="row g-0">
         <div class="col-md-4">
           <img
-            src="../../assets/Order/bunbo.jpg"
+            src="../../assets/logo.jpg"
             class="img-fluid rounded-start"
             alt="..."
           />
@@ -14,6 +14,16 @@
           <div class="card-body">
             <h4 class="card-title">{{ food.name }}</h4>
 
+            <!-- :mousewheel="true" -->
+            <!-- v-model="quantity" -->
+            <!-- <vue-numeric-input
+              v-model="qty"
+              :min="1"
+              :max="20"
+              :step="1"
+              align="center"
+              width="7rem"
+            /> -->
             <div class="quantity">
               <i class="bi bi-dash-circle-fill" @click="decraseItemHandler" />
 
@@ -22,8 +32,10 @@
               <i class="bi bi-plus-circle-fill" @click="addItemHandler" />
             </div>
 
+            <p>{{ total }}</p>
+
             <button type="button" class="btn btn-danger" @click="deleteHandler">
-              <i class="bi bi-trash-fill" />
+              <i class="bi bi-trash-fill"></i>
             </button>
           </div>
         </div>
@@ -35,10 +47,20 @@
 <script>
 export default {
   props: ["food", "id"],
-
+  data() {
+    return {
+      // qty: this.food.qty,
+    };
+  },
   computed: {
     quantity() {
       return this.food.qty;
+    },
+    total() {
+      return parseInt(this.food.price * this.food.qty).toLocaleString("it-IT", {
+        style: "currency",
+        currency: "VND",
+      });
     },
   },
   methods: {
@@ -60,6 +82,11 @@ export default {
       });
     },
   },
+  // watcher: {
+  //   quantity() {
+  //     console.log(quantity);
+  //   },
+  // },
 };
 </script>
 
@@ -70,12 +97,12 @@ export default {
 }
 
 .quantity p {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .card {
-  border: 2px solid #494449;
+  /* border: 2px solid #494449; */
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   /* background-image: url("../../assets/Order/lotus.jpg"); */
   background-position: center;
@@ -105,5 +132,17 @@ img {
 .btn:active,
 .btn:focus {
   transform: translateY(-1px);
+}
+
+.food-card_order-count input {
+  background: #f5f5f5;
+  border-color: #f5f5f5;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  text-align: center;
+}
+
+.food-card_order-count {
+  width: 5rem;
 }
 </style>

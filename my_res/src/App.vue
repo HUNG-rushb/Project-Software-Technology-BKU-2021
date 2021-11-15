@@ -11,19 +11,11 @@
 </template>
 
 <script>
+// import menu from "./data/food";
+
 export default {
   data() {
-    return {
-      foods: [
-        {
-          id: "1",
-          name: "Bún bò Huế",
-          description:
-            "Bún bò là một trong những đặc sản của xứ Huế, mặc dù món bún này phổ biến trên cả ba miền ở Việt Nam và cả người Việt tại hải ngoại.",
-          img: "./assets/images/Food images/....",
-        },
-      ],
-    };
+    return {};
   },
 };
 </script>
@@ -40,7 +32,6 @@ export default {
 /* #8e9189, #494449, #857f74, #eeefeb, #ddeac1  */
 * {
   box-sizing: border-box;
-  /* display: block; */
 }
 
 html {
