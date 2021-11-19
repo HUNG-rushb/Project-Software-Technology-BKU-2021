@@ -35,7 +35,6 @@
 <style scoped>
 .list {
     padding: 0;
-    margin: 0 20px 0 0;
 }
 .list:hover .star {
     color: #ffd700;

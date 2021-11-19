@@ -7,6 +7,7 @@
         <div class="col-lg-6 col-md-12 col-xm-0"><Logo /></div>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -14,28 +15,29 @@
 import Header from "../components/Layout/Header.vue";
 import Form from "../components/Feedback/Form.vue";
 import Logo from "../components/Feedback/Logo.vue";
+import Footer from "../components/Layout/Footer.vue";
 
 export default {
   components: {
-    Header, 
+    Header,
     Form,
     Logo,
-  },
+    Footer,
+    Footer
+},
 };
 </script>
 
 <style scoped>
 .main {
   background-color: #b3b3b3;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow-y: scroll;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .custom {
   background-color: #fff;
-  margin: 80px auto;
+  margin: 90px auto 30px;
+  border-radius: 4px;
 }
 </style>
