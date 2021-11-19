@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <Header />
     <div class="container custom">
       <div class="row">
         <div class="col-lg-6 col-md-12 col-xm-12"><Form /></div>
@@ -10,11 +11,13 @@
 </template>
 
 <script>
+import Header from "../components/Layout/Header.vue";
 import Form from "../components/Feedback/Form.vue";
 import Logo from "../components/Feedback/Logo.vue";
 
 export default {
   components: {
+    Header, 
     Form,
     Logo,
   },
@@ -29,10 +32,10 @@ export default {
   right: 0;
   bottom: 0;
   left: 0;
-  display: flex;
+  overflow-y: scroll;
 }
 .custom {
   background-color: #fff;
-  margin: auto;
+  margin: 80px auto;
 }
 </style>
