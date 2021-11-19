@@ -4,32 +4,19 @@
 
     <CheckCart />
 
-    <!-- <Header /> -->
-    <!-- <h1>Menu</h1> -->
     <div class="row" id="menu">
-      <!-- <FoodItem /> -->
       <div class="col-lg-9 col-md-9 col-sm-12" id="left_col">
-
-        <FoodItem />
+        <FoodItem :foodmenu="searchMenu"/>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-12" id="right_col">
         <div>
           <br> <br>
           <label for="search" class="left" id="search_label">Tìm kiếm: </label>
-          <input type="text" name="search_value" class="form-control" id="search">
-          <button type="button" class="btn btn-light" id="searchbtn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
-            </svg>
-          </button>
-
-          <!-- <button class="btn btn-light" id="searchbtn">Tìm</button> -->
-
+          <input type="text" v-model="search" name="search_value" class="form-control" id="search">
           <br> <br> <br> <br> <br>
-
-
           <label for="sort" class="left" id="sort_label">Sắp xếp theo: </label>
-          <select id="sort" class="form-select">
+          <select id="sort" class="form-select" v-model="sort" name = "Sort">
+            <option value="default" class="option" selected>Mặc định</option>
             <option value="aaa" class="option">Tên: A-Z</option>
             <option value="zzz" class="option">Tên: Z-A</option>
             <option value="high" class="option">Giá: Cao-Thấp</option>
@@ -40,38 +27,6 @@
         <br />
         <br />
         <br />
-        <div>
-          <label class="left">Category: </label>
-          <br />
-          <div class="form-check">
-            <input
-              class="form-check-input right"
-              type="radio"
-              name="food_type"
-              id="type_all"
-              checked
-            />
-            <label class="form-check-label" for="type_all"> All </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input right"
-              type="radio"
-              name="food_type"
-              id="type_food"
-            />
-            <label class="form-check-label" for="type_food"> Food </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input right"
-              type="radio"
-              name="food_type"
-              id="type_drink"
-            />
-            <label class="form-check-label" for="type_drink"> Drink </label>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -83,11 +38,7 @@
 
 
 import FoodItem from '../components/Menu/FoodItem.vue'
-// import Grid from "../components/Menu/Grid.vue";
-
-
-// import Header from "../components/Header.vue";
-
+import getMenu from "../firebase/getMenu.js";
 import Header from "../components/Layout/Header.vue";
 import Footer from "../components/Layout/Footer.vue";
 import CheckCart from "../components/Layout/CheckCart.vue";
@@ -97,12 +48,83 @@ export default {
   name: "Menu",
   components: {
     FoodItem,
-    // Grid,
-
     Header,
     CheckCart,
     Footer,
   },
+  data() {
+    console.log(getMenu);
+    return {
+      foodmenu: getMenu,
+      search: '',
+      sort: '',
+      filter: '',
+    };
+  },
+  method: {
+    filterMenu (category) {
+      this.resetMenu()
+      if (category !== 'All') {
+        this.foodmenu = this.foodmenu.filter((item) => {
+          return item.type === category
+        })
+      }
+    },
+    resetMenu () {
+      this.foodmenu = getMenu;
+    },
+
+    filterFood: function(){
+      return this.foodmenu.filter((item)=>{
+        return item.type === 'food';
+      });
+    }
+  },
+  computed: {
+    searchMenu: function() { 
+      var foodmenu = this.foodmenu.filter((item) => {
+          return item.name.toLowerCase().includes(this.search.toLowerCase());
+        });
+      
+      // if (this.filter == 'all')
+      // {
+      //     foodmenu = data;
+      // }
+      // else if (this.filter == 'food')
+      // {
+      //     foodmenu = this.foodmenu.filter((item) => {
+      //     return item.type == 'food';
+      //   });
+      // }
+      // else if (this.filter == 'drink')
+      // {
+      //     foodmenu = this.foodmenu.filter((item) => {
+      //     return item.type == 'drink';
+      //   });
+      // }
+
+      if (this.sort == 'high') {
+        return foodmenu.sort(function(a, b) {
+          return b.price - a.price
+        });
+      }
+      else if (this.sort == 'low') {
+        return foodmenu.sort(function(a, b) {
+          return a.price - b.price
+        }); 
+      }
+      else if (this.sort == 'aaa') {
+        return foodmenu.sort((a, b) => (a.name > b.name) ? 1 : -1 );
+      }
+      else if (this.sort == 'zzz') {
+        return foodmenu.sort((a, b) => (b.name > a.name) ? 1 : -1 );
+      }
+      else {
+        return foodmenu;
+      } 
+    }
+
+  }
 };
 </script>
 
@@ -118,7 +140,7 @@ export default {
   padding-top: 0;
 
   margin-top: 4rem;
-
+  margin-bottom: 20px;
 }
 .left {
   float: left;
