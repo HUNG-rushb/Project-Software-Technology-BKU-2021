@@ -1,7 +1,12 @@
 <template>
     <div class="rating">
         <ul class="list">
-            <li @click="rate(star)" v-for="star in maxStars" :class="{ 'active': star <= stars }" :key="star.stars" class="star">
+            <li @click="rate(star), $emit('sendNumStar', stars)" 
+                v-for="star in maxStars" 
+                :class="{ 'active': star <= stars }" 
+                :key="star.stars" 
+                class="star"
+            >
                 <i :class="star <= stars ? 'bi bi-star-fill' : 'bi bi-star'"></i> 
             </li>
         </ul>
@@ -14,7 +19,7 @@
         props: ['grade', 'maxStars', 'hasCounter'],
         data() {
             return {
-                stars: this.grade
+                stars: this.grade,
             }
         },
         methods: {
@@ -22,7 +27,7 @@
                 if (typeof star === 'number' && star <= this.maxStars && star >= 0) {
                     this.stars = this.stars === star ? star - 1 : star
                 }
-            }
+            },
         },
     }
 </script>
