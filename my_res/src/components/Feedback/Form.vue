@@ -60,6 +60,7 @@
                     name: null,
                     phone: null,
                     message: null,
+                    timeCreated: null, 
                 },
                 nameMsg: '',
                 phoneMsg: '',
@@ -120,9 +121,10 @@
             send() {
                 if (this.isName && this.isPhone) {
                     this.submitted = true;
+                    this.feedback.timeCreated = new Date();
                     projectFirestore.collection("Feedback").add(this.feedback)
                     .then(function() {
-                        console.log("Sent!!")
+                        console.log("Sent!!");
                     })
                 }
             },
