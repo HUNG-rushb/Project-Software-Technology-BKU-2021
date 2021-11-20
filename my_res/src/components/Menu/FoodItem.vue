@@ -1,4 +1,5 @@
 <template>
+
 <!-- v-bind:src="require('../../assets/Menu/' + item.image)" -->
   <div class="container overflow-hidden">
     <div class="row gy-5">
@@ -22,6 +23,7 @@
             </p>
             <button class="btn btn-primary center">Mua</button>
           </div>
+
         </div>
       </div>
     </div>
@@ -30,21 +32,12 @@
 
 <script>
 
+
 export default {
   name: "FoodItem",
   props: [
     'foodmenu'
   ]
+
 };
 </script>
-
-<style scoped>
-.center {
-  text-align: center;
-}
-
-img {
-  height: 220px;
-  object-fit: cover;
-}
-</style>

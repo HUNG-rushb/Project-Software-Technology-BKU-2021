@@ -4,16 +4,22 @@
 
     <CheckCart />
 
+
     <div class="row" id="menu">
       <div class="col-lg-9 col-md-9 col-sm-12" id="left_col">
+
         <FoodItem :foodmenu="searchMenu"/>
+
       </div>
       <div class="col-lg-3 col-md-3 col-sm-12" id="right_col">
         <div>
-          <br> <br>
+          <br />
+          <br />
           <label for="search" class="left" id="search_label">Tìm kiếm: </label>
+
           <input type="text" v-model="search" name="search_value" class="form-control" id="search">
           <br> <br> <br> <br> <br>
+
           <label for="sort" class="left" id="sort_label">Sắp xếp theo: </label>
           <select id="sort" class="form-select" v-model="sort" name = "Sort">
             <option value="default" class="option" selected>Mặc định</option>
@@ -42,15 +48,16 @@ import getMenu from "../firebase/getMenu.js";
 import Header from "../components/Layout/Header.vue";
 import Footer from "../components/Layout/Footer.vue";
 import CheckCart from "../components/Layout/CheckCart.vue";
+import OrderButton from "../components/Layout/OrderButton.vue";
 
 export default {
-
   name: "Menu",
   components: {
     FoodItem,
     Header,
     CheckCart,
     Footer,
+    OrderButton,
   },
   data() {
     console.log(getMenu);
@@ -140,7 +147,9 @@ export default {
   padding-top: 0;
 
   margin-top: 4rem;
+
   margin-bottom: 20px;
+
 }
 .left {
   float: left;
@@ -161,11 +170,7 @@ export default {
 }
 #sort_label,
 #search_label {
-
-
   padding-top: 8px;
-
-
 }
 .option {
   width: 100px;
@@ -177,9 +182,10 @@ export default {
   display: inline-block;
 }
 
-label, .option, #sort, .form-control {
+label,
+.option,
+#sort,
+.form-control {
   font-size: 90%;
 }
-
-
 </style>
