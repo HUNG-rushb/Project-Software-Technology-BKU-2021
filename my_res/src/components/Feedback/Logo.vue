@@ -1,6 +1,6 @@
 <template>
     <div class="logo">
-        <img src="https://st.depositphotos.com/3079665/3991/v/600/depositphotos_39915779-stock-illustration-chef-giving-thumbs-up.jpg" alt="">
+        <img src="../../assets/images/Feedback/chief.jpg" alt="Đầu bếp">
     </div>
 </template>
 

@@ -2,7 +2,7 @@
   <transition name="modal-fade">
     <div class="modal-backdrop">
       <div class="modal" role="dialog">
-        <img src="https://img.freepik.com/free-vector/thank-you-lettering_1262-6963.jpg?size=626&ext=jpg&ga=GA1.2.1686565817.1634083200" alt="">
+        <img src="../../assets/images/Feedback/thanku.jpg" alt="Cảm ơn">
         <div class="msg">
         <p>Cám ơn bạn đã gửi đánh giá nhà hàng chúng mình!</p>
         <p>Mong bạn đã có những trải nghiệm vui vẻ tại đây!</p>
