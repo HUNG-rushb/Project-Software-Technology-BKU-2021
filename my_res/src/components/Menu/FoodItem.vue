@@ -1,15 +1,29 @@
 <template>
-  <div>
-    <div class="container overflow-hidden">
-      <div class="row gy-3">
-        <div
-          v-for="item in menu"
-          :key="item.id"
-          class="col-4"
-          data-aos="zoom-in-up"
-          data-aos-once="true"
-        >
-          <FoodCard :food="item" :id="item.id" />
+
+<!-- v-bind:src="require('../../assets/Menu/' + item.image)" -->
+  <div class="container overflow-hidden">
+    <div class="row gy-5">
+      <div
+        class="col-lg-4 col-md-6 col-sm-12"
+        v-for="item in foodmenu"
+        :key="item.id"
+      >
+        <div class="card p-3 border bg-light h-100">
+          <img
+            :src="item.image"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text">Giá: {{ item.price }} VNĐ</p>
+            <p class="card-text">
+            <!-- {{ item.description.slice(0,100) }} -->
+            {{ item.description.slice(0,82) }}
+            </p>
+            <button class="btn btn-primary center">Mua</button>
+          </div>
+
         </div>
       </div>
     </div>
@@ -17,17 +31,13 @@
 </template>
 
 <script>
-import FoodCard from "./FoodCard.vue";
-import getMenu from "../../firebase/getMenu";
+
 
 export default {
-  components: { FoodCard },
-  data() {
-    return {
-      menu: getMenu,
-    };
-  },
+  name: "FoodItem",
+  props: [
+    'foodmenu'
+  ]
 
-  methods: {},
 };
 </script>
