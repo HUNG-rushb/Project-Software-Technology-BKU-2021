@@ -16,9 +16,9 @@
           <div class="card-body">
             <h5 class="card-title">{{ item.name }}</h5>
             <p class="card-text">Giá: {{ item.price }} VNĐ</p>
-            <p class="card-text">
+            <p class="card-text" id="des">
             <!-- {{ item.description.slice(0,100) }} -->
-            {{ item.description.slice(0,82) }}
+            {{ item.description }}
             </p>
             <button class="btn btn-primary center">Mua</button>
           </div>
@@ -46,5 +46,13 @@ export default {
 img {
   height: 220px;
   object-fit: cover;
+}
+
+#des {
+  -webkit-line-clamp: 3;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 </style>
