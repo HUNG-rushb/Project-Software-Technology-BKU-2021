@@ -35,7 +35,7 @@
                 placeholder="Enter Your Password"
               />
               <label for="floatingInput"> Mật khẩu</label>
-            </div>
+            <!-- </div>
             <div class="mb-3 form-check">
               <input
                 type="checkbox"
@@ -45,7 +45,7 @@
               />
               <label class="form-check-label" for="exampleCheck1"
                 >Ghi nhớ tài khoản</label
-              >
+              > -->
             </div>
             <div class="d-flex justify-content-center">
               <button type="submit" @click.prevent="login" class="btn btn-primary">Đăng nhập</button>
