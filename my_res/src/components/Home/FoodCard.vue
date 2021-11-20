@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="card shadow-lg">
-      <img src="../../assets/logo.jpg" class="card-img-top" alt="..." />
+      <img :src="image" class="card-img-top" />
 
       <div class="card-body">
         <h5 class="card-title">
@@ -9,9 +9,6 @@
           <i class="bi bi-info-circle-fill" @click="foodDetailsHandler" />
         </h5>
 
-        <!-- <p class="card-text">
-          {{ food.description }}
-        </p> -->
         <hr />
 
         <div class="food-card_price">
@@ -36,33 +33,21 @@ export default {
   setup() {
     const emitter = inject("emitter");
 
-    const addItem = () => {
-      emitter.emit("add-item");
-    };
-
-    const showFoodDetails = () => {
-      emitter.emit("show-food-details");
-    };
-
     return {
-      addItem,
-      showFoodDetails,
+      emitter,
     };
   },
   methods: {
     addItemHandler() {
-      this.addItem();
+      this.emitter.emit("add-item", this.food.name);
 
-      // this.$store.dispatch("cart/addToCart", {
-      //   id: this.id,
-      // });
       this.$store.dispatch("addToCart", {
         id: this.id,
       });
     },
 
     foodDetailsHandler() {
-      this.showFoodDetails();
+      this.emitter.emit("show-food-details", this.food);
     },
   },
   computed: {
@@ -71,6 +56,9 @@ export default {
         style: "currency",
         currency: "VND",
       });
+    },
+    image() {
+      return this.food.image;
     },
   },
 };
@@ -82,7 +70,7 @@ export default {
 }
 
 .card-img-top {
-  max-height: 15rem;
+  max-height: 10rem;
 }
 
 .card {
