@@ -30,7 +30,8 @@ export default {
 
 <style scoped>
 .main {
-  background-color: #b3b3b3;
+  /* background-color: #b3b3b3; */
+  background-color: #cdf591;
   height: 100%;
   display: flex;
   flex-direction: column;
