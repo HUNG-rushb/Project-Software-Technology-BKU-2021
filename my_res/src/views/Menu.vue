@@ -4,29 +4,37 @@
 
     <CheckCart />
 
-
     <div class="row" id="menu">
       <div class="col-lg-9 col-md-9 col-sm-12" id="left_col">
-
-        <FoodItem :foodmenu="searchMenu"/>
-
+        <FoodItem :foodmenu="searchMenu" />
       </div>
+
       <div class="col-lg-3 col-md-3 col-sm-12" id="right_col">
         <div>
           <br />
           <br />
           <label for="search" class="left" id="search_label">Tìm kiếm: </label>
 
-          <input type="text" v-model="search" name="search_value" class="form-control" id="search">
-          <br> <br> <br> <br> <br>
+          <input
+            type="text"
+            v-model="search"
+            name="search_value"
+            class="form-control"
+            id="search"
+          />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
 
           <label for="sort" class="left" id="sort_label">Sắp xếp theo: </label>
-          <select id="sort" class="form-select" v-model="sort" name = "Sort">
+          <select id="sort" class="form-select" v-model="sort" name="Sort">
             <option value="default" class="option" selected>Mặc định</option>
-            <option value="aaa" class="option">Tên: A-Z</option>
-            <option value="zzz" class="option">Tên: Z-A</option>
-            <option value="high" class="option">Giá: Cao-Thấp</option>
-            <option value="low" class="option">Giá: Thấp-Cao</option>
+            <option value="aaa" class="option">Tên: A -> Z</option>
+            <option value="zzz" class="option">Tên: Z -> A</option>
+            <option value="high" class="option">Giá: Cao -> Thấp</option>
+            <option value="low" class="option">Giá: Thấp -> Cao</option>
           </select>
         </div>
         <br />
@@ -41,9 +49,7 @@
 </template>
 
 <script>
-
-
-import FoodItem from '../components/Menu/FoodItem.vue'
+import FoodItem from "../components/Menu/FoodItem.vue";
 import getMenu from "../firebase/getMenu.js";
 import Header from "../components/Layout/Header.vue";
 import Footer from "../components/Layout/Footer.vue";
@@ -60,39 +66,40 @@ export default {
     OrderButton,
   },
   data() {
-    console.log(getMenu);
+    // console.log(getMenu);
     return {
       foodmenu: getMenu,
-      search: '',
-      sort: '',
-      filter: '',
+      search: "",
+      sort: "",
+      filter: "",
     };
   },
   method: {
-    filterMenu (category) {
-      this.resetMenu()
-      if (category !== 'All') {
+    filterMenu(category) {
+      this.resetMenu();
+      if (category !== "All") {
         this.foodmenu = this.foodmenu.filter((item) => {
-          return item.type === category
-        })
+          return item.type === category;
+        });
       }
     },
-    resetMenu () {
+
+    resetMenu() {
       this.foodmenu = getMenu;
     },
 
-    filterFood: function(){
-      return this.foodmenu.filter((item)=>{
-        return item.type === 'food';
+    filterFood() {
+      return this.foodmenu.filter((item) => {
+        return item.type === "food";
       });
-    }
+    },
   },
   computed: {
-    searchMenu: function() { 
+    searchMenu: function() {
       var foodmenu = this.foodmenu.filter((item) => {
-          return item.name.toLowerCase().includes(this.search.toLowerCase());
-        });
-      
+        return item.name.toLowerCase().includes(this.search.toLowerCase());
+      });
+
       // if (this.filter == 'all')
       // {
       //     foodmenu = data;
@@ -110,28 +117,23 @@ export default {
       //   });
       // }
 
-      if (this.sort == 'high') {
+      if (this.sort == "high") {
         return foodmenu.sort(function(a, b) {
-          return b.price - a.price
+          return b.price - a.price;
         });
-      }
-      else if (this.sort == 'low') {
+      } else if (this.sort == "low") {
         return foodmenu.sort(function(a, b) {
-          return a.price - b.price
-        }); 
-      }
-      else if (this.sort == 'aaa') {
-        return foodmenu.sort((a, b) => (a.name > b.name) ? 1 : -1 );
-      }
-      else if (this.sort == 'zzz') {
-        return foodmenu.sort((a, b) => (b.name > a.name) ? 1 : -1 );
-      }
-      else {
+          return a.price - b.price;
+        });
+      } else if (this.sort == "aaa") {
+        return foodmenu.sort((a, b) => (a.name > b.name ? 1 : -1));
+      } else if (this.sort == "zzz") {
+        return foodmenu.sort((a, b) => (b.name > a.name ? 1 : -1));
+      } else {
         return foodmenu;
-      } 
-    }
-
-  }
+      }
+    },
+  },
 };
 </script>
 
@@ -149,7 +151,6 @@ export default {
   margin-top: 4rem;
 
   margin-bottom: 20px;
-
 }
 .left {
   float: left;
