@@ -99,7 +99,9 @@ const store = createStore({
       return state.qty;
     },
   },
+
   plugins: [createPersistedState()],
+
 });
 
 export default store;

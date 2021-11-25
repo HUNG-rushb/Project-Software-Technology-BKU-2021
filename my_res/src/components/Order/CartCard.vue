@@ -8,7 +8,9 @@
 
         <div class="col-md-8">
           <div class="card-body">
+
             <div class="card-title">{{ food.name }}</div>
+
 
             <div class="quantity">
               <i class="bi bi-dash-circle-fill" @click="decraseItemHandler" />
@@ -36,9 +38,11 @@ export default {
     quantity() {
       return this.food.qty;
     },
+
     image() {
       return this.food.image;
     },
+
   },
   methods: {
     deleteHandler() {

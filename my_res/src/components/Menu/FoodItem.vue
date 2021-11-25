@@ -7,7 +7,9 @@
         v-for="item in foodmenu"
         :key="item.id"
       >
+
         <FoodCard :food="item" :id="item.id" />
+
       </div>
     </div>
   </div>
@@ -22,3 +24,22 @@ export default {
   props: ["foodmenu"],
 };
 </script>
+
+<style scoped>
+.center {
+  text-align: center;
+}
+
+img {
+  height: 220px;
+  object-fit: cover;
+}
+
+#des {
+  -webkit-line-clamp: 3;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+</style>
