@@ -1,5 +1,7 @@
 <template>
+
   <div class="fixed-top">
+
     <router-link to="/order/cart" class="btn btn-success" id="ordernow">
       Thanh toán
     </router-link>

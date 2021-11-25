@@ -10,6 +10,7 @@
           <div class="card-body">
             <h4 class="card-title">{{ food.name }}</h4>
 
+
             <div class="quantity">
               <i class="bi bi-dash-circle-fill" @click="decraseItemHandler" />
 
@@ -33,6 +34,7 @@
 <script>
 export default {
   props: ["food", "id"],
+
 
   computed: {
     quantity() {
@@ -66,7 +68,43 @@ export default {
         id: this.id,
       });
     },
+
   },
+  computed: {
+    quantity() {
+      return this.food.qty;
+    },
+    total() {
+      return parseInt(this.food.price * this.food.qty).toLocaleString("it-IT", {
+        style: "currency",
+        currency: "VND",
+      });
+    },
+  },
+  methods: {
+    deleteHandler() {
+      this.$store.dispatch("removeFromCart", {
+        id: this.id,
+        price: this.food.price,
+        qty: this.food.qty,
+      });
+    },
+    addItemHandler() {
+      this.$store.dispatch("addToCart", {
+        id: this.id,
+      });
+    },
+    decraseItemHandler() {
+      this.$store.dispatch("minusOneItem", {
+        id: this.id,
+      });
+    },
+  },
+  // watcher: {
+  //   quantity() {
+  //     console.log(quantity);
+  //   },
+  // },
 };
 </script>
 
