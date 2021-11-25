@@ -1,9 +1,9 @@
 import { createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
 import menu from "../firebase/getMenu";
 
 const store = createStore({
   state: {
-    // isLoggedIn: false,
     items: [],
     total: 0,
     qty: 0,
@@ -99,6 +99,9 @@ const store = createStore({
       return state.qty;
     },
   },
+
+  plugins: [createPersistedState()],
+
 });
 
 export default store;

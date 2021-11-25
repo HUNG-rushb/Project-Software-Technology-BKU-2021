@@ -1,19 +1,21 @@
 <template>
   <div>
-    <div class="card">
-      <img src="../../assets/logo.jpg" class="card-img-top" alt="..." />
+    <div class="card shadow-lg">
+      <img :src="image" class="card-img-top" alt="..." />
 
       <div class="card-body">
-        <h5 class="card-title">Bún bò Huế</h5>
-        <!-- <h5 class="card-title">{{ name }}</h5> -->
-
-        <p class="card-text">
-          <!-- {{ description }} -->
-          Bún bò Huế
+        <h5 class="card-title">
+          {{ food.name }}
           <i class="bi bi-info-circle-fill" @click="foodDetailsHandler" />
-        </p>
+        </h5>
 
-        <span class="badge rounded-pill bg-success">20.000 đồng</span>
+        <hr />
+
+        <div class="food-card_price">
+          <span>
+            {{ displayPrice }}
+          </span>
+        </div>
 
         <button class="btn btn-success shine" @click="addItemHandler">
           <i class="bi bi-cart-fill"></i> Mua
@@ -27,46 +29,64 @@
 import { inject } from "vue";
 
 export default {
+  props: ["food", "id"],
   setup() {
     const emitter = inject("emitter");
 
-    const addItem = () => {
-      emitter.emit("add-item");
-    };
-
-    const moreInfoHandler = () => {
-      emitter.emit("show-food-details");
-    };
-
     return {
-      addItem,
-      moreInfoHandler,
+      emitter,
     };
   },
   methods: {
     addItemHandler() {
-      this.addItem();
-      this.$store.commit({
-        type: "insertItem",
+      this.emitter.emit("add-item", this.food.name);
+
+      this.$store.dispatch("addToCart", {
+        id: this.id,
       });
     },
 
     foodDetailsHandler() {
-      this.showFoodDetails();
+      this.emitter.emit("show-food-details");
     },
   },
-
-  mounted() {},
-  // setup(){
-  //   const emitter = inject("emitter"); // Inject `emitter`
-  // }
+  computed: {
+    displayPrice() {
+      return parseInt(this.food.price).toLocaleString("it-IT", {
+        style: "currency",
+        currency: "VND",
+      });
+    },
+    image() {
+      return this.food.image;
+    },
+  },
 };
 </script>
 
 <style scoped>
+.card-title {
+  font-size: 1rem;
+}
+
+.card-img-top {
+  max-height: 10rem;
+}
+
 .card {
-  /* width: 18rem; */
   display: block;
+}
+
+.card-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.food-card_price {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #f47a00;
 }
 
 button {
@@ -92,7 +112,6 @@ button {
   position: relative;
   overflow: hidden;
   transition: all 100ms linear;
-
   right: 0;
 }
 
@@ -132,5 +151,9 @@ button {
   margin-top: 1rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.bi-info-circle-fill {
+  cursor: pointer;
 }
 </style>

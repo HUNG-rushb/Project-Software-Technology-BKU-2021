@@ -23,7 +23,6 @@ import getMenu from "../../firebase/getMenu";
 export default {
   components: { FoodCard },
   data() {
-    console.log(getMenu);
     return {
       menu: getMenu,
     };

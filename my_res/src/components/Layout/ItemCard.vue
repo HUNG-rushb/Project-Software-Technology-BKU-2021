@@ -3,27 +3,14 @@
     <div class="card mb-3" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img
-            src="../../assets/logo.jpg"
-            class="img-fluid rounded-start"
-            alt="..."
-          />
+          <img :src="image" class="img-fluid rounded-start" alt="..." />
         </div>
 
         <div class="col-md-8">
           <div class="card-body">
             <h4 class="card-title">{{ food.name }}</h4>
 
-            <!-- :mousewheel="true" -->
-            <!-- v-model="quantity" -->
-            <!-- <vue-numeric-input
-              v-model="qty"
-              :min="1"
-              :max="20"
-              :step="1"
-              align="center"
-              width="7rem"
-            /> -->
+
             <div class="quantity">
               <i class="bi bi-dash-circle-fill" @click="decraseItemHandler" />
 
@@ -47,10 +34,41 @@
 <script>
 export default {
   props: ["food", "id"],
-  data() {
-    return {
-      // qty: this.food.qty,
-    };
+
+
+  computed: {
+    quantity() {
+      return this.food.qty;
+    },
+    total() {
+      return parseInt(this.food.price * this.food.qty).toLocaleString("it-IT", {
+        style: "currency",
+        currency: "VND",
+      });
+    },
+    image() {
+      return this.food.image;
+    },
+  },
+  methods: {
+    deleteHandler() {
+      this.$store.dispatch("removeFromCart", {
+        id: this.id,
+        price: this.food.price,
+        qty: this.food.qty,
+      });
+    },
+    addItemHandler() {
+      this.$store.dispatch("addToCart", {
+        id: this.id,
+      });
+    },
+    decraseItemHandler() {
+      this.$store.dispatch("minusOneItem", {
+        id: this.id,
+      });
+    },
+
   },
   computed: {
     quantity() {
