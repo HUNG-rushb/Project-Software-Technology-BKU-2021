@@ -139,6 +139,8 @@ export default {
 /* Navbar  */
 .navbar {
   background-image: linear-gradient(to bottom right, #ddeac1, #8e9189);
+  /* background-image: linear-gradient(to bottom right, #ddeac1, #ff8e32); */
+
 }
 
 .navbar-toggler {

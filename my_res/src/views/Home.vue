@@ -4,13 +4,18 @@
 
     <!-- <HeaderVideo /> -->
 
+    <HomeSlider />
+
+
     <CheckCart />
 
     <OrderButton />
 
+
     <!-- <ReviewFood /> -->
 
     <!-- <AddToast /> -->
+
 
     <HomeMenu />
 
@@ -34,6 +39,7 @@ import Footer from "../components/Layout/Footer.vue";
 import ReviewFood from "../components/Layout/ReviewFood.vue";
 
 import UpdateDataFirebase from "../components/shared/UpdateFirebaseData.vue";
+import HomeSlider from "../components/Home/HomeSlider.vue";
 
 export default {
   components: {
@@ -47,7 +53,8 @@ export default {
     GoogleMap,
     ReviewFood,
     UpdateDataFirebase,
-  },
+    HomeSlider
+},
 };
 </script>
 
