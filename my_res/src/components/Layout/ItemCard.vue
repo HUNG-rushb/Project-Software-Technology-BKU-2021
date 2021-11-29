@@ -3,13 +3,12 @@
     <div class="card mb-3" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img :src="image" class="img-fluid rounded-start" alt="..." />
+          <img :src="image" class="img-fluid rounded-start" />
         </div>
 
         <div class="col-md-8">
           <div class="card-body">
             <h4 class="card-title">{{ food.name }}</h4>
-
 
             <div class="quantity">
               <i class="bi bi-dash-circle-fill" @click="decraseItemHandler" />
@@ -35,7 +34,6 @@
 export default {
   props: ["food", "id"],
 
-
   computed: {
     quantity() {
       return this.food.qty;
@@ -50,37 +48,7 @@ export default {
       return this.food.image;
     },
   },
-  methods: {
-    deleteHandler() {
-      this.$store.dispatch("removeFromCart", {
-        id: this.id,
-        price: this.food.price,
-        qty: this.food.qty,
-      });
-    },
-    addItemHandler() {
-      this.$store.dispatch("addToCart", {
-        id: this.id,
-      });
-    },
-    decraseItemHandler() {
-      this.$store.dispatch("minusOneItem", {
-        id: this.id,
-      });
-    },
 
-  },
-  computed: {
-    quantity() {
-      return this.food.qty;
-    },
-    total() {
-      return parseInt(this.food.price * this.food.qty).toLocaleString("it-IT", {
-        style: "currency",
-        currency: "VND",
-      });
-    },
-  },
   methods: {
     deleteHandler() {
       this.$store.dispatch("removeFromCart", {
@@ -100,11 +68,6 @@ export default {
       });
     },
   },
-  // watcher: {
-  //   quantity() {
-  //     console.log(quantity);
-  //   },
-  // },
 };
 </script>
 

@@ -8,6 +8,7 @@ const store = createStore({
     total: 0,
     qty: 0,
   },
+
   mutations: {
     addProductToCart(state, payload) {
       const productData = payload;
@@ -65,6 +66,28 @@ const store = createStore({
         parseInt(prodData.price) * parseInt(prodData.qty)
       );
     },
+
+    deleteCart(state) {
+      const deleteItems = state.items.map((a) => a.id);
+
+      deleteItems.forEach((item) => {
+        const productInCartIndex = state.items.findIndex(
+          (cartItem) => cartItem.id === item
+        );
+
+        const prodData = state.items[productInCartIndex];
+
+        state.items.splice(productInCartIndex, 1);
+
+        state.qty -= prodData.qty;
+
+        state.total -= parseInt(
+          parseInt(prodData.price) * parseInt(prodData.qty)
+        );
+
+        console.log("ok");
+      });
+    },
   },
 
   actions: {
@@ -87,7 +110,12 @@ const store = createStore({
     removeFromCart(context, payload) {
       context.commit("removeProductFromCart", payload);
     },
+
+    emptyCart(context) {
+      context.commit("deleteCart");
+    },
   },
+
   getters: {
     products(state) {
       return state.items;
@@ -101,7 +129,6 @@ const store = createStore({
   },
 
   plugins: [createPersistedState()],
-
 });
 
 export default store;

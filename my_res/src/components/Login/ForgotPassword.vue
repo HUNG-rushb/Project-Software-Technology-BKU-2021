@@ -1,7 +1,7 @@
 <template>
   <div id="FPW">
     <Header />
-    <section class="container-fluid">
+    <section class="container-fluid" id="form">
       <section class="row justify-content-center">
         <section class="col-12 col-sm-6 col-md-3">
           <form class="form-container">
@@ -9,7 +9,7 @@
               Đặt lại mật khẩu
             </h2>
             <br />
-            <div class="mb-3 form-floating" >
+            <div class="mb-3 form-floating">
               <input
                 type="text"
                 v-model="phoneNumbers"
@@ -20,8 +20,8 @@
               />
               <label for="floatingInput"> Nhập số điện thoại</label>
               <div class="invalid-feedback">
-                 {{messagePhone}}
-                </div>
+                {{ messagePhone }}
+              </div>
             </div>
             <div class="mb-3 form-floating">
               <input
@@ -39,12 +39,12 @@
                   class="form-control"
                   placeholder="Enter Code"
                   v-model="this.OTPcode"
-                  :class="{'is-invalid': isOTP}"
+                  :class="{ 'is-invalid': isOTP }"
                   @blur="this.isOTP = false"
                 />
-                <label for="floatingInput" > Nhập mã xác nhận</label>
+                <label for="floatingInput"> Nhập mã xác nhận</label>
                 <div class="invalid-feedback">
-                 {{messageOTP}}
+                  {{ messageOTP }}
                 </div>
               </div>
 
@@ -60,7 +60,13 @@
             </div>
             <br />
             <div class="d-flex justify-content-center ">
-              <button type="submit" class="btn btn-primary" @click.prevent="UpdatePwd">Xác nhận</button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                @click.prevent="UpdatePwd"
+              >
+                Xác nhận
+              </button>
             </div>
             <hr />
             <p class="small text-center">Quay lại đăng nhập ?</p>
@@ -89,49 +95,46 @@ export default {
   data() {
     return {
       phoneNumbers: "",
-      newPwd:"",
-      OTPcode:"",
-      OTP:"",
-      messageOTP:"",
-      messagePhone:"",
-      isphone:null,
-      isOTP:null
+      newPwd: "",
+      OTPcode: "",
+      OTP: "",
+      messageOTP: "",
+      messagePhone: "",
+      isphone: null,
+      isOTP: null,
     };
   },
   methods: {
-   async UpdatePwd()
-    {
-      const account = projectFirestore.collection("Customer Account").doc(this.phoneNumbers)
-      if((await account.get()).exists )
-      {
-        if(this.OTP == this.OTPcode)
-        {
-            projectFirestore.collection("Customer Account").doc(this.phoneNumbers).update(
-              {
-                "Password": this.newPwd
-              })
-              this.$router.push({path: '/login'})
+    async UpdatePwd() {
+      const account = projectFirestore
+        .collection("Customer Account")
+        .doc(this.phoneNumbers);
+      if ((await account.get()).exists) {
+        if (this.OTP == this.OTPcode) {
+          projectFirestore
+            .collection("Customer Account")
+            .doc(this.phoneNumbers)
+            .update({
+              Password: this.newPwd,
+            });
+          this.$router.push({ path: "/login" });
+        } else {
+          (this.isOTP = true), (this.messageOTP = "Mã xác nhận không đúng");
         }
-        else{
-          this.isOTP = true,
-          this.messageOTP = "Mã xác nhận không đúng"
-        }
-        
-      }
-      else{
-        this.isphone =true,
-        this.messagePhone = "Số điện thoại không hợp lệ"
+      } else {
+        (this.isphone = true),
+          (this.messagePhone = "Số điện thoại không hợp lệ");
       }
     },
     generateOTP() {
-      var string ="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      var string =
+        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
       var len = string.length;
       for (let i = 0; i < 6; i++) {
         this.OTP += string[Math.floor(Math.random() * len)];
       }
       alert("send code ( " + this.OTP + " ) to " + this.phoneNumbers);
-
     },
   },
 };
@@ -142,6 +145,11 @@ export default {
   background-image: url("../../assets/background.jpg");
   background-size: cover;
 }
+
+#form {
+  margin-bottom: 5rem;
+}
+
 .form-container {
   /* position: absolute; */
   margin-top: 5rem;

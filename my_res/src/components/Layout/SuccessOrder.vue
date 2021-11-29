@@ -3,12 +3,12 @@
     <div
       class="offcanvas offcanvas-bottom"
       tabindex="-1"
-      id="offcanvasBottom"
+      id="successOffcanvas"
       aria-labelledby="offcanvasBottomLabel"
     >
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasBottomLabel">
-          {{ food.name }}
+          Đặt hàng thành công!
         </h5>
 
         <button
@@ -19,10 +19,8 @@
         ></button>
       </div>
 
-      <img :src="image" />
-
       <div class="offcanvas-body small">
-        {{ food.description }}
+        nice
       </div>
     </div>
   </div>
@@ -30,45 +28,38 @@
 
 <script>
 import { inject } from "vue";
-// import { Offcanvas } from "bootstrap";
 
 export default {
-  data() {
-    return {
-      food: {},
-    };
-  },
   inject: ["offcanvas"],
   mounted() {
+    // https://forum.vuejs.org/t/vue-3-call-a-method-from-setup/112084
+    // https://stackoverflow.com/questions/64746129/how-to-call-method-in-setup-of-vuejs3-app
     const emitter = inject("emitter");
 
-    emitter.on("show-food-details", (arg) => {
-      // var modal = new Offcanvas(document.getElementById("offcanvasBottom"), {
-      var modal = new this.offcanvas(
-        document.getElementById("offcanvasBottom"),
-        {
-          keyboard: true,
-        }
-      );
-      modal.show();
-
-      this.food = arg;
+    emitter.on("show-order-success", () => {
+      // var modalLive = document.getElementById("successModal");
+      // var modal = new Modal(modalLive, {
+      //   var success = new this.offcanvas(
+      //     document.getElementById("successOffcanvas"),
+      //     {
+      //       keyboard: true,
+      //     }
+      //   );
+      //   success.show();
     });
-  },
-  computed: {
-    image() {
-      return this.food.image;
-    },
   },
 };
 </script>
 
 <style scoped>
 #offcanvasBottom {
-  height: 95vh;
+  height: 50vh;
   width: 50%;
 
   margin-left: auto;
   margin-right: auto;
+
+  margin-bottom: auto;
+  margin-top: auto;
 }
 </style>
