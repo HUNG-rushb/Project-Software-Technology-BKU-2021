@@ -2,6 +2,8 @@
   <div>
     <Header />
 
+    <OrderButton />
+
     <CheckCart />
 
     <div class="row" id="menu">
@@ -53,6 +55,7 @@ import FoodItem from "../components/Menu/FoodItem.vue";
 import getMenu from "../firebase/getMenu.js";
 import Header from "../components/Layout/Header.vue";
 import Footer from "../components/Layout/Footer.vue";
+
 import CheckCart from "../components/Layout/CheckCart.vue";
 import OrderButton from "../components/Layout/OrderButton.vue";
 

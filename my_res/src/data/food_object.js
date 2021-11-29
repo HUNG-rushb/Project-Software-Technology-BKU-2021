@@ -18,7 +18,7 @@ const menu = {
   "3": {
     id: Math.floor(Math.random() * 10000),
     name: "BÚN CHẢ CÁ QUY NHƠN",
-    Image: "",
+    image: "",
     description:
       "Bún chả cá Quy Nhơn là sự kết hợp của những lát chả cá thơm ngon, nước lèo nấu từ cá, vị chua nhẹ của cà chua chín và thơm hòa quyện vào nhau tạo cảm giác rất đặc biệt.",
     price: "45000",
@@ -26,7 +26,7 @@ const menu = {
   "4": {
     id: Math.floor(Math.random() * 10000),
     name: "BÁNH ĐA CUA HẢI PHÒNG",
-    Image: "",
+    image: "",
     description:
       "Một bát bánh đa cua ngon, thường mang những màu sắc rất hấp dẫn của gạch cua đồng, màu nâu của bánh đa, màu xanh thậm của chả lá lốt, xanh tươi của hành lá hòa quyện với sắc đỏ của ớt và vàng rộm của hành phi.",
     price: "60000",

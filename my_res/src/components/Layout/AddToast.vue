@@ -47,8 +47,8 @@ export default {
     emitter.on("add-item", (name) => {
       this.foodName = name;
 
-      var toastLive = document.getElementById("liveToast");
-      var toast = new Toast(toastLive);
+      // var toastLive = document.getElementById("liveToast");
+      var toast = new Toast(document.getElementById("liveToast"));
       toast.show();
     });
   },

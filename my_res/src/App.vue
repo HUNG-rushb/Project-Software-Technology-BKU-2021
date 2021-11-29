@@ -12,10 +12,11 @@
 
 <script>
 // import menu from "./data/food";
+import { Offcanvas } from "bootstrap";
 
 export default {
-  data() {
-    return {};
+  provide: {
+    offcanvas: Offcanvas,
   },
 };
 </script>

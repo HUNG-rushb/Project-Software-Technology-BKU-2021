@@ -1,27 +1,26 @@
 <template>
   <div>
-    <!-- <Header /> -->
+    <Header />
 
-    <!-- <HeaderVideo /> -->
+    <HeaderVideo />
 
     <HomeSlider />
 
+    <SuccessOrder />
 
-    <CheckCart />
-
+    <BackToTop />
     <OrderButton />
-
-
-    <!-- <ReviewFood /> -->
-
-    <!-- <AddToast /> -->
-
+    <AddToast />
+    <CheckCart />
+    <ReviewFood />
 
     <HomeMenu />
 
-    <!-- <GoogleMap />
+    <GoogleMap />
 
-    <Footer /> -->
+    <Footer />
+
+    <!-- <ZaloChat /> -->
 
     <!-- <UpdateDataFirebase /> -->
   </div>
@@ -37,9 +36,12 @@ import HomeMenu from "../components/Home/HomeMenu.vue";
 import GoogleMap from "../components/Home/GoogleMap.vue";
 import Footer from "../components/Layout/Footer.vue";
 import ReviewFood from "../components/Layout/ReviewFood.vue";
+import BackToTop from "../components/Layout/BackToTop.vue";
+import SuccessOrder from "../components/Layout/SuccessOrder.vue";
 
 import UpdateDataFirebase from "../components/shared/UpdateFirebaseData.vue";
 import HomeSlider from "../components/Home/HomeSlider.vue";
+// import ZaloChat from "../components/Layout/ZaloChat.vue";
 
 export default {
   components: {
@@ -53,9 +55,10 @@ export default {
     GoogleMap,
     ReviewFood,
     UpdateDataFirebase,
-    HomeSlider
-},
+    HomeSlider,
+    SuccessOrder,
+    BackToTop,
+    // ZaloChat
+  },
 };
 </script>
-
-<style scoped></style>
