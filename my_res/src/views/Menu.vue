@@ -151,7 +151,7 @@ export default {
 #menu {
   padding-top: 0;
 
-  margin-top: 4rem;
+  margin-top: 10rem;
 
   margin-bottom: 20px;
 }

@@ -104,10 +104,16 @@ export default {
       const collecAccount = projectFirestore
         .collection("Customer Account")
         .doc(this.phoneNumbers);
-      const docsAcc = collecAccount.get();
+
+      // const docsAcc = collecAccount.get();
+
       if ((await collecAccount.get()).exists) {
         if (collecAccount.get("Password")) {
           this.$router.push({ path: "/home" });
+
+          // Updated by Hung
+          // Hien thi tai khoan khach hang
+          this.$store.dispatch("logIn", this.phoneNumbers);
         } else {
           this.isphone = true;
           this.message = "Tài khoản hoặc mật khẩu không chính xác";
