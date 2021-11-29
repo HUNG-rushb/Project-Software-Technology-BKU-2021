@@ -55,7 +55,7 @@
           </ul>
 
           <form>
-            <router-link class="btn" to="/login" id="login">
+            <!-- <router-link class="btn" to="/login" id="login">
               <i class="bi bi-person-fill"></i> Đăng nhập
             </router-link>
 
@@ -64,7 +64,25 @@
             </router-link>
 
             <button class="btn btn-danger">
-              <!-- <i class="bi bi-person-plus-fill" v-if ></i> Đăng xuất -->
+              <i class="bi bi-box-arrow-right" id="logout"></i> Đăng xuất
+            </button> -->
+
+            <span v-if="isLoggedIn">{{ username }}</span>
+
+            <router-link v-if="!isLoggedIn" class="btn" to="/login" id="login">
+              <i class="bi bi-person-fill"></i> Đăng nhập
+            </router-link>
+
+            <router-link
+              v-if="!isLoggedIn"
+              class="btn"
+              to="/register"
+              id="register"
+            >
+              <i class="bi bi-person-plus-fill"></i> Đăng kí
+            </router-link>
+
+            <button v-if="isLoggedIn" @click="logout" class="btn btn-danger">
               <i class="bi bi-box-arrow-right" id="logout"></i> Đăng xuất
             </button>
           </form>
@@ -76,7 +94,22 @@
 
 <script>
 export default {
-  methods: {},
+  data() {
+    return {
+      username: this.$store.getters.getUsername,
+    };
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logOut");
+      return;
+    },
+  },
 };
 </script>
 
@@ -140,7 +173,6 @@ export default {
 .navbar {
   background-image: linear-gradient(to bottom right, #ddeac1, #8e9189);
   /* background-image: linear-gradient(to bottom right, #ddeac1, #ff8e32); */
-
 }
 
 .navbar-toggler {

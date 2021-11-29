@@ -150,7 +150,7 @@ export default {
 
       this.$store.dispatch("emptyCart");
 
-      // alert("Đơn hàng của bạn đã được tiếp nhận!");
+      alert("Đơn hàng của bạn đã được tiếp nhận!");
     },
   },
 };
