@@ -1,7 +1,8 @@
 <template>
   <div id="rg">
     <Header />
-    <section class="container-fluid">
+
+    <section class="container-fluid" id="form">
       <section class="row justify-content-center">
         <section class="col-12 col-sm-6 col-md-3">
           <form class="form-container">
@@ -95,7 +96,9 @@
               </div>
             </div>
             <div class="d-flex justify-content-center ">
-              <button class="btn btn-primary">Đăng kí</button>
+              <button class="btn btn-primary" @click.prevent="AddData">
+                Đăng kí
+              </button>
             </div>
 
             <hr />
@@ -116,6 +119,8 @@
 <script>
 import Header from "../Layout/Header.vue";
 import Footer from "../Layout/Footer.vue";
+
+import { projectFirestore } from "../../firebase/config";
 export default {
   components: {
     Header,
@@ -167,6 +172,35 @@ export default {
       if (this.password === "") this.ispassword = true;
       else this.ispassword = false;
     },
+
+    async AddData() {
+      const accout = await await projectFirestore
+        .collection("Customer Account")
+        .doc(this.phoneNumbers);
+      if (!(await accout.get()).exists) {
+        if (
+          this.isfirstname == false &&
+          this.islastname == false &&
+          this.isaddress == false &&
+          this.isphone == false &&
+          this.ispassword == false
+        ) {
+          accout.set({
+            FirstName: this.firstName,
+            LastName: this.lastName,
+            PhoneNumbers: this.phoneNumbers,
+            Password: this.password,
+            Address: this.address,
+          });
+          this.$router.push({ path: "/home" });
+        } else {
+          console.log("Register Fail");
+        }
+      } else {
+        (this.isphone = true), (this.message = "Số điện thoại đã được đăng kí");
+        return false;
+      }
+    },
   },
 };
 </script>
@@ -176,6 +210,12 @@ export default {
   background-image: url("../../assets/background.jpg");
   background-size: cover;
 }
+
+#form {
+  margin-bottom: 5rem;
+  margin-top: 3rem;
+}
+
 .form-container {
   /* position: absolute; */
   margin-top: 5rem;

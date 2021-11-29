@@ -1,25 +1,134 @@
 import { createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
+import menu from "../firebase/getMenu";
 
-export default createStore({
-  modules: {},
+const store = createStore({
   state: {
-    itemCount: 0,
+    items: [],
+    total: 0,
+    qty: 0,
+  },
 
-    isLoggedIn: false,
-  },
   mutations: {
-    insertItem(state) {
-      state.itemCount++;
+    addProductToCart(state, payload) {
+      const productData = payload;
+
+      const productInCartIndex = state.items.findIndex(
+        (ci) => ci.id === productData.id
+      );
+
+      if (productInCartIndex >= 0) {
+        state.items[productInCartIndex].qty++;
+      } else {
+        const newItem = {
+          name: productData.name,
+          id: productData.id,
+          title: productData.title,
+          image: productData.image,
+          price: productData.price,
+          qty: 1,
+        };
+        state.items.push(newItem);
+      }
+
+      state.qty++;
+      state.total += parseInt(productData.price);
     },
-    deleteItem(state) {
-      state.itemCount--;
+
+    minusOneFood(state, payload) {
+      const productData = payload;
+
+      const productInCartIndex = state.items.findIndex(
+        (ci) => ci.id === productData.id
+      );
+
+      if (state.items[productInCartIndex].qty === 1) {
+        return;
+      } else {
+        state.items[productInCartIndex].qty--;
+        state.qty--;
+        state.total -= parseInt(productData.price);
+      }
+    },
+
+    removeProductFromCart(state, payload) {
+      const productInCartIndex = state.items.findIndex(
+        (cartItem) => cartItem.id === payload.id
+      );
+
+      const prodData = state.items[productInCartIndex];
+
+      state.items.splice(productInCartIndex, 1);
+
+      state.qty -= prodData.qty;
+
+      state.total -= parseInt(
+        parseInt(prodData.price) * parseInt(prodData.qty)
+      );
+    },
+
+    deleteCart(state) {
+      const deleteItems = state.items.map((a) => a.id);
+
+      deleteItems.forEach((item) => {
+        const productInCartIndex = state.items.findIndex(
+          (cartItem) => cartItem.id === item
+        );
+
+        const prodData = state.items[productInCartIndex];
+
+        state.items.splice(productInCartIndex, 1);
+
+        state.qty -= prodData.qty;
+
+        state.total -= parseInt(
+          parseInt(prodData.price) * parseInt(prodData.qty)
+        );
+
+        console.log("ok");
+      });
     },
   },
+
+  actions: {
+    addToCart(context, payload) {
+      // const prodId = payload.id;
+
+      const product = menu.value.find((prod) => prod.id === payload.id);
+
+      context.commit("addProductToCart", product);
+    },
+
+    minusOneItem(context, payload) {
+      // const prodId = payload.id;
+
+      const product = menu.value.find((prod) => prod.id === payload.id);
+
+      context.commit("minusOneFood", product);
+    },
+
+    removeFromCart(context, payload) {
+      context.commit("removeProductFromCart", payload);
+    },
+
+    emptyCart(context) {
+      context.commit("deleteCart");
+    },
+  },
+
   getters: {
-    finalItemCount(state) {
-      return state.itemCount;
+    products(state) {
+      return state.items;
+    },
+    totalSum(state) {
+      return state.total;
+    },
+    quantity(state) {
+      return state.qty;
     },
   },
-  actions: {},
-  modules: {},
+
+  plugins: [createPersistedState()],
 });
+
+export default store;

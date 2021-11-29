@@ -6,7 +6,10 @@
       <section class="row justify-content-center">
         <section class="col-12 col-sm-6 col-md-3">
           <form class="form-container">
-            <h2><i class="bi bi-house"></i>Đăng Nhập</h2>
+            <h2>
+              <!-- <i class="bi bi-house"></i> -->
+              Đăng Nhập
+            </h2>
             <br />
             <div class="mb-3 form-floating">
               <input
@@ -30,11 +33,12 @@
               <input
                 type="password"
                 class="form-control"
+                v-model="password"
                 id="exampleInputPassword1"
                 placeholder="Enter Your Password"
               />
               <label for="floatingInput"> Mật khẩu</label>
-            </div>
+              <!-- </div>
             <div class="mb-3 form-check">
               <input
                 type="checkbox"
@@ -44,10 +48,16 @@
               />
               <label class="form-check-label" for="exampleCheck1"
                 >Ghi nhớ tài khoản</label
-              >
+              > -->
             </div>
             <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-primary">Đăng nhập</button>
+              <button
+                type="submit"
+                @click.prevent="login"
+                class="btn btn-primary"
+              >
+                Đăng nhập
+              </button>
             </div>
             <div class="text-center">
               <router-link class="small" to="/resetpassword"
@@ -75,18 +85,38 @@
 <script>
 import Header from "../Layout/Header.vue";
 import Footer from "../Layout/Footer.vue";
+import { projectFirestore } from "../../firebase/config";
+import BuyButton from "../shared/BuyButton.vue";
 
 export default {
   data() {
     return {
       phoneNumbers: "",
       isphone: null,
+      password: "",
       message: "",
       OTPcode: "",
       save: null,
     };
   },
   methods: {
+    async login() {
+      const collecAccount = projectFirestore
+        .collection("Customer Account")
+        .doc(this.phoneNumbers);
+      const docsAcc = collecAccount.get();
+      if ((await collecAccount.get()).exists) {
+        if (collecAccount.get("Password")) {
+          this.$router.push({ path: "/home" });
+        } else {
+          this.isphone = true;
+          this.message = "Tài khoản hoặc mật khẩu không chính xác";
+        }
+      } else {
+        this.isphone = true;
+        this.message = "Tài khoản hoặc mật khẩu không chính xác";
+      }
+    },
     checkPhoneNumbers() {
       // SĐT đã được đăng kí
       this.isphone = false;
@@ -108,6 +138,7 @@ export default {
   components: {
     Header,
     Footer,
+    BuyButton,
   },
 };
 </script>
@@ -118,7 +149,7 @@ export default {
 }, */
 
 #login {
-  background-image: url('../../assets/background.jpg');
+  background-image: url("../../assets/background.jpg");
   background-size: cover;
 }
 
@@ -131,7 +162,6 @@ export default {
   border-radius: 20px;
   box-shadow: 0px 0px 10px 0px #000;
   width: 400px;
-  background-image: linear-gradient(to bottom right, #e9dcdc, #fef2e2)
+  background-image: linear-gradient(to bottom right, #e9dcdc, #fef2e2);
 }
-
 </style>

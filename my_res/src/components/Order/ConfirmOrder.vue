@@ -30,7 +30,6 @@
             id="Series"
             placeholder="name@example.com"
             required
-            v-model.trim="recvName"
           />
           <label for="recvName">Mã Số Thẻ</label>
         </div>
@@ -45,7 +44,6 @@
               id="Expired"
               placeholder="name@example.com"
               required
-              v-model.trim="recvName"
             />
             <label for="recvName">Ngày Hết Hạn</label>
           </div>
@@ -59,7 +57,6 @@
               id="CVV"
               placeholder="name@example.com"
               required
-              v-model.trim="recvName"
             />
             <label for="recvName">CVV/CVC</label>
           </div>
@@ -75,7 +72,6 @@
             id="Series"
             placeholder="name@example.com"
             required
-            v-model.trim="recvName"
           />
           <label for="recvName">Mã Giảm Giá</label>
         </div>
@@ -89,15 +85,11 @@
         <div class="col"><hr /></div>
       </div>
 
-      <div class="row text-center">
-        <div class="col">
-          <div class="p-3">
-            <button type="button" class="btn btn-success">
-              Thanh Toán Momo
-            </button>
-          </div>
-        </div>
-      </div>
+      <ul class="list-group" id="paymentgroup">
+        <li class="list-group-item"><MoMo /></li>
+        <li class="list-group-item"><ZaloPay /></li>
+        <li class="list-group-item"><VNPay /></li>
+      </ul>
 
       <div class="row gx-5">
         <div class="col">
@@ -113,8 +105,8 @@
         </div>
 
         <div class="col">
-          <div class="p-3">
-            <router-link to="/order/confirm" class="btn btn-success text-right">
+          <div class="p-3" @click="orderSuccess">
+            <router-link to="/home" class="btn btn-success text-right">
               Đặt hàng
             </router-link>
           </div>
@@ -129,13 +121,41 @@
 <script>
 import Header from "../Layout/Header.vue";
 import Footer from "../Layout/Footer.vue";
-
 import Progress from "./Progress.vue";
 
+import ZaloPay from "./ZaloPay.vue";
+import MoMo from "./MoMo.vue";
+// import MoMoOfficial from "./MoMoOfficial.vue";
+import VNPay from "./VNPay.vue";
+
+import { inject } from "vue";
+
 export default {
-  components: { Progress, Header, Footer },
+  components: { Progress, Header, Footer, ZaloPay, MoMo, VNPay },
+  setup() {
+    const emitter = inject("emitter");
+
+    return {
+      emitter,
+    };
+  },
+  data() {
+    return {
+      recvName: "",
+    };
+  },
+  methods: {
+    orderSuccess() {
+      // this.emitter.emit("show-order-success");
+
+      this.$store.dispatch("emptyCart");
+
+      // alert("Đơn hàng của bạn đã được tiếp nhận!");
+    },
+  },
 };
 </script>
+
 <style scoped>
 .h8 {
   font-size: 27px;
@@ -152,5 +172,11 @@ export default {
   font-size: 16px;
   font-weight: 700;
   text-align: center;
+}
+
+#paymentgroup {
+  max-width: 70%;
+  margin-right: auto;
+  margin-left: auto;
 }
 </style>

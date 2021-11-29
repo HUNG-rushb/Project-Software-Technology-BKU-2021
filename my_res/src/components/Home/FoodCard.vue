@@ -1,21 +1,21 @@
 <template>
   <div>
     <div class="card shadow-lg">
-      <img src="../../assets/logo.jpg" class="card-img-top" alt="..." />
+      <img :src="image" class="card-img-top" />
 
       <div class="card-body">
         <h5 class="card-title">
-          Bún bò Huế
+          {{ food.name }}
           <i class="bi bi-info-circle-fill" @click="foodDetailsHandler" />
         </h5>
-        <!-- <h5 class="card-title">{{ name }}</h5> -->
 
-        <p class="card-text">
-          <!-- {{ description }} -->
-          Bún bò Huế
-        </p>
+        <hr />
 
-        <span class="badge rounded-pill bg-success">20.000 đồng</span>
+        <div class="food-card_price">
+          <span>
+            {{ displayPrice }}
+          </span>
+        </div>
 
         <button class="btn btn-success shine" @click="addItemHandler">
           <i class="bi bi-cart-fill"></i> Mua
@@ -29,47 +29,64 @@
 import { inject } from "vue";
 
 export default {
+  props: ["food", "id"],
   setup() {
     const emitter = inject("emitter");
 
-    const addItem = () => {
-      emitter.emit("add-item");
-    };
-
-    const showFoodDetails = () => {
-      emitter.emit("show-food-details");
-    };
-
     return {
-      addItem,
-      showFoodDetails,
+      emitter,
     };
   },
   methods: {
     addItemHandler() {
-      this.addItem();
-      this.$store.commit({
-        type: "insertItem",
+      this.emitter.emit("add-item", this.food.name);
+
+      this.$store.dispatch("addToCart", {
+        id: this.id,
       });
     },
 
     foodDetailsHandler() {
-      this.showFoodDetails();
+      this.emitter.emit("show-food-details", this.food);
     },
   },
-
-  mounted() {},
+  computed: {
+    displayPrice() {
+      return parseInt(this.food.price).toLocaleString("it-IT", {
+        style: "currency",
+        currency: "VND",
+      });
+    },
+    image() {
+      return this.food.image;
+    },
+  },
 };
 </script>
 
 <style scoped>
+.card-title {
+  font-size: 1rem;
+}
+
 .card-img-top {
-  max-height: 15rem;
+  max-height: 10rem;
 }
 
 .card {
-  width: 15rem;
   display: block;
+}
+
+.card-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.food-card_price {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #f47a00;
 }
 
 button {
