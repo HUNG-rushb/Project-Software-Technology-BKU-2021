@@ -30,7 +30,6 @@
 
 <script>
 import { inject } from "vue";
-
 // import { Offcanvas } from "bootstrap";
 
 export default {
@@ -43,13 +42,12 @@ export default {
   mounted() {
     const emitter = inject("emitter");
 
-    emitter.on("show-food-details", (arg) => {
+    emitter.on("show-details", (arg) => {
       // var modal = new Offcanvas(document.getElementById("offcanvasBottom"), {
       var modal = new this.offcanvas(
         document.getElementById("offcanvasBottom"),
         {
           keyboard: true,
-          // backdrop: false,
         }
       );
       modal.show();

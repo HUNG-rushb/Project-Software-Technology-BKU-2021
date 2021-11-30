@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="container overflow-hidden">
+      <h3>Món bán chạy nhất</h3>
       <div class="row gy-3">
         <div
           v-for="item in menu"
@@ -18,18 +19,14 @@
 
 <script>
 import FoodCard from "./FoodCard.vue";
-import getMenu from "../../firebase/getMenu";
+import getHomeMenu from "../../firebase/getHomeMenu";
 
 export default {
   components: { FoodCard },
   data() {
     return {
-      menu: getMenu,
+      menu: getHomeMenu,
     };
   },
-
-  methods: {},
 };
 </script>
-
-<style scoped></style>
