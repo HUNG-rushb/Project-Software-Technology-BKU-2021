@@ -30,6 +30,7 @@
 
 <script>
 import { inject } from "vue";
+
 // import { Offcanvas } from "bootstrap";
 
 export default {
@@ -48,6 +49,7 @@ export default {
         document.getElementById("offcanvasBottom"),
         {
           keyboard: true,
+          // backdrop: false,
         }
       );
       modal.show();

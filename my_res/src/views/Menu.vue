@@ -6,6 +6,7 @@
     <AddToast />
     <CheckCart />
     <ReviewFood />
+
     <div class="row" id="menu">
       <div class="col-lg-9 col-md-9 col-sm-12" id="left_col">
         <FoodItem :foodmenu="searchMenu" />
@@ -39,10 +40,6 @@
             <option value="low" class="option">Giá: Thấp -> Cao</option>
           </select>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
       </div>
     </div>
 
@@ -70,7 +67,7 @@ export default {
     Footer,
     OrderButton,
     AddToast,
-    ReviewFood
+    ReviewFood,
   },
   data() {
     // console.log(getMenu);
