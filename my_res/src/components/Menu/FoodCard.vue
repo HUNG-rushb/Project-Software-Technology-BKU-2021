@@ -47,7 +47,7 @@ export default {
     },
 
     foodDetailsHandler() {
-      this.emitter.emit("show-food-details", this.food);
+      this.emitter.emit("show-details", this.food);
     },
   },
   computed: {
@@ -71,6 +71,7 @@ export default {
 
 .card-img-top {
   max-height: 10rem;
+  object-fit: cover;
 }
 
 .card {

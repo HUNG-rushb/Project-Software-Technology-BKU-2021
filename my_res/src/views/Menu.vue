@@ -3,9 +3,9 @@
     <Header />
 
     <OrderButton />
-
+    <AddToast />
     <CheckCart />
-
+    <ReviewFood />
     <div class="row" id="menu">
       <div class="col-lg-9 col-md-9 col-sm-12" id="left_col">
         <FoodItem :foodmenu="searchMenu" />
@@ -58,6 +58,8 @@ import Footer from "../components/Layout/Footer.vue";
 
 import CheckCart from "../components/Layout/CheckCart.vue";
 import OrderButton from "../components/Layout/OrderButton.vue";
+import AddToast from "../components/Layout/AddToast.vue";
+import ReviewFood from "../components/Menu/ReviewFood.vue";
 
 export default {
   name: "Menu",
@@ -67,6 +69,8 @@ export default {
     CheckCart,
     Footer,
     OrderButton,
+    AddToast,
+    ReviewFood
   },
   data() {
     // console.log(getMenu);
