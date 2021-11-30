@@ -41,7 +41,7 @@ import SuccessOrder from "../components/Layout/SuccessOrder.vue";
 
 import UpdateDataFirebase from "../components/shared/UpdateFirebaseData.vue";
 import HomeSlider from "../components/Home/HomeSlider.vue";
-// import ZaloChat from "../components/Layout/ZaloChat.vue";
+import ZaloChat from "../components/Layout/ZaloChat.vue";
 
 export default {
   components: {
@@ -58,7 +58,7 @@ export default {
     HomeSlider,
     SuccessOrder,
     BackToTop,
-    // ZaloChat
+    ZaloChat,
   },
 };
 </script>
