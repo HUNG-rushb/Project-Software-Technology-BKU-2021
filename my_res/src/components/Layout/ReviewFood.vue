@@ -1,4 +1,5 @@
 <template>
+  <!-- <div class="fixed-top"> -->
   <div>
     <div
       class="offcanvas offcanvas-bottom"

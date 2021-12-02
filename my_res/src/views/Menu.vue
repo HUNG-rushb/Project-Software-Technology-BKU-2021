@@ -4,7 +4,8 @@
 
     <OrderButton />
     <AddToast />
-    <CheckCart />
+
+    <ZaloChat />
     <ReviewFood />
 
     <div class="row" id="menu">
@@ -44,6 +45,8 @@
     </div>
 
     <Footer />
+
+    <CheckCart />
   </div>
 </template>
 
@@ -57,6 +60,7 @@ import CheckCart from "../components/Layout/CheckCart.vue";
 import OrderButton from "../components/Layout/OrderButton.vue";
 import AddToast from "../components/Layout/AddToast.vue";
 import ReviewFood from "../components/Menu/ReviewFood.vue";
+import ZaloChat from "../components/Layout/ZaloChat.vue";
 
 export default {
   name: "Menu",
@@ -68,6 +72,7 @@ export default {
     OrderButton,
     AddToast,
     ReviewFood,
+    ZaloChat,
   },
   data() {
     // console.log(getMenu);

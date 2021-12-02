@@ -77,7 +77,7 @@ export default {
 <style scoped>
 #cart {
   background-color: #a4c066;
-  position: absolute;
+  position: fixed;
   right: 1rem;
   top: 5rem;
 }
