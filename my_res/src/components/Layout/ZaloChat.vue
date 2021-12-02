@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fixed-top">
     <div
       class="zalo-chat-widget"
       data-oaid="137117482624142109"
@@ -10,9 +10,3 @@
     ></div>
   </div>
 </template>
-
-<script>
-export default {};
-</script>
-
-<style scoped></style>

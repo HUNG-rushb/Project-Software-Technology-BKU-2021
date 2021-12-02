@@ -11,7 +11,7 @@
     <BackToTop />
     <OrderButton />
     <AddToast />
-    <CheckCart />
+
     <ReviewFood />
 
     <HomeMenu />
@@ -21,6 +21,8 @@
     <Footer />
 
     <ZaloChat />
+
+    <CheckCart />
 
     <!-- <UpdateDataFirebase /> -->
   </div>
