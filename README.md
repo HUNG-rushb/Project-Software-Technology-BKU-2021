@@ -1,4 +1,7 @@
 # Project-Software-Technology-BKU-2021
+
+![BKU](nha_hang_mon_viet.png)
+
 Đây là đồ án Công nghệ phần mềm nhóm mình thực hiện vào 10/2021, học kì 211 tại BKU.
 
 ## Table of contents
